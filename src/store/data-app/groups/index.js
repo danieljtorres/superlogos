@@ -1,4 +1,3 @@
-/* SERVICIOS */
 import { logos } from './logos.js'
 import { web } from './diseno-web.js'
 import { rotulos } from './rotulos.js'

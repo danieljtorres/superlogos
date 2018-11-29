@@ -1,12 +1,12 @@
 <template>
   <v-layout row>
     <v-flex md6>
-      <img :src="require(`~/assets/images/home/${images[0]}`)" width="100%">
+      <img :src="require(`~/assets/images/home/services/${images[0]}`)" width="100%">
     </v-flex>
     <v-flex md6>
       <h2>{{ title }}</h2>
       <p>{{ description }}</p>
-      <img :src="require(`~/assets/images/home/${images[1]}`)" width="100%">
+      <img :src="require(`~/assets/images/home/services/${images[1]}`)" width="100%">
       <p>{{ shortDescription }}</p>
       <v-btn color="blue">solicitar</v-btn>
     </v-flex>

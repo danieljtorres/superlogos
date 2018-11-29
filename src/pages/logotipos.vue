@@ -14,7 +14,7 @@
           <v-layout row wrap>
             <v-flex v-for="(wpayf, index) in wePutAtYourFingertips" :key="index" md4 class="mb-3 pa-1">
               <div class="text-xs-center pa-3" style="border-bottom: 3px solid #2196F3; background-color: rgba(0, 0, 0, 0.75);">
-                <img :src="require(`~/assets/images/logotipos/icons/work_table_${index + 1}.png`)" width="30%" style="filter: brightness(10);">
+                <img :src="require(`~/assets/images/logotipos/icons/${index + 1}.png`)" width="30%" style="filter: brightness(10);">
                 <br>
                 <h2 class="body-2 font-weight-bold text-xs-center mb-2" style="color: white;">{{ wpayf.title }}</h2>
                 <p class="caption" style="color: white;">{{ wpayf.text }}</p>

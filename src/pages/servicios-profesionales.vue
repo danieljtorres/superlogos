@@ -41,6 +41,14 @@
         </v-flex>
       </v-layout>
     </v-container>
+    <v-container>
+      <v-layout row wrap>
+        <v-flex md12 class="text-xs-center">
+          <h2 class="display-1 font-weight-bold pb-2">¿Necesitas un servicio profesional?</h2>
+          <v-btn color="primary">CONTACTANOS</v-btn>
+        </v-flex>
+      </v-layout>
+    </v-container>
     <v-layout row class="mt-5">
       <v-flex md6>
         <img src="~/assets/images/home/banner_contact.jpg" width="100%" height="100%">

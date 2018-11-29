@@ -1,23 +1,16 @@
 <template>
   <section class="logotipos">
-    <img src="~/assets/images/logotipos/banner_1.jpg" width="100%"/>
-    <AppHeading number="1" size="headline" color="#000000" title="PORTFOLIO"/>
-    <v-container grid-list-xl class="my-4">
-      <v-layout row wrap>
-        
-      </v-layout>
-    </v-container>
+    <img src="~/assets/images/rotulados/banner_1.png" width="100%"/>
     <v-layout row class="my-5">
       <v-flex offset-md2 md8>
         <AppHeading number="1" size="headline" color="#000000" title="PONEMOS A SU ALCANCE"/>
         <v-container grid-list-xl class="pa-4">
           <v-layout row wrap>
-            <v-flex v-for="(wpayf, index) in wePutAtYourFingertips" :key="index" md4 class="mb-3 pa-1">
+            <v-flex v-for="(wpayf, index) in wePutAtYourFingertips" :key="index" md3 class="mb-3 pa-1">
               <div class="text-xs-center pa-3" style="border-bottom: 3px solid #2196F3; background-color: rgba(0, 0, 0, 0.75);">
-                <img :src="require(`~/assets/images/logotipos/icons/work_table_${index + 1}.png`)" width="30%" style="filter: brightness(10);">
+                <img :src="require(`~/assets/images/rotulados/icons/${index + 1}.png`)" width="30%" style="filter: brightness(10);">
                 <br>
                 <h2 class="body-2 font-weight-bold text-xs-center mb-2" style="color: white;">{{ wpayf.title }}</h2>
-                <p class="caption" style="color: white;">{{ wpayf.text }}</p>
               </div>
             </v-flex>
           </v-layout>
@@ -72,12 +65,10 @@
         name: 'LOGOTIPOS',
         alt: 'Lorem ipsum',
         wePutAtYourFingertips: [
-          { title: 'LOGO 100% UNICO Y ORIGINAL', text: 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum' },
-          { title: 'GARANTIA DE CONFORMIDAD', text: 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum' },
-          { title: 'DISEÑOS ILIMITADOS', text: 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum' },
-          { title: '+40 PROFESIONALES', text: 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum' },
-          { title: 'DISEÑOS DE UN DÍA PARA OTRO', text: 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum' },
-          { title: 'ATENCIÓN PERZONALIZADA', text: 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum' }
+          { title: 'LOGO 100% UNICO Y ORIGINAL' },
+          { title: 'GARANTIA DE CONFORMIDAD' },
+          { title: 'DISEÑOS ILIMITADOS' },
+          { title: '+40 PROFESIONALES' }
         ]
       }
     },

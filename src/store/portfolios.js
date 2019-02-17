@@ -1,119 +1,8 @@
+var pending = false
+
 export const state = () => ({
   list: [],
-  indexExamples: [
-    [
-      {
-        img: '/images/examples/1.png',
-        icon: '/icons/white/app.svg',
-        service: 'App Movil',
-        url: 'diseno-de-app',
-        color: 'rgba(222, 58, 58, 0.80)',
-        textColor: 'white'
-      },
-      {
-        img: '/images/examples/2.png',
-        icon: '/icons/white/pack-identidad.svg',
-        service: 'Imagen Corporativa',
-        url: 'imagen-corporativa',
-        color: 'rgba(222, 58, 58, 0.80)',
-        textColor: 'white'
-      },
-      {
-        img: '/images/examples/3.png',
-        icon: '/icons/white/app.svg',
-        service: 'App Movil',
-        url: 'diseno-de-app',
-        color: 'rgba(222, 58, 58, 0.80)',
-        textColor: 'white'
-      },
-      {
-        img: '/images/examples/4.png',
-        icon: '/icons/white/catalogo.svg',
-        service: 'Catálogo',
-        url: 'catalogo',
-        color: 'rgba(222, 58, 58, 0.80)',
-        textColor: 'white'
-      },
-      {
-        img: '/images/examples/1.png',
-        icon: '/icons/white/diptico.svg',
-        service: 'Diptico',
-        url: 'diptico',
-        color: 'rgba(222, 58, 58, 0.80)',
-        textColor: 'white'
-      },
-      {
-        img: '/images/examples/2.png',
-        icon: '/icons/white/flyer.svg',
-        service: 'Flyer',
-        url: 'Flyer',
-        color: 'rgba(222, 58, 58, 0.80)',
-        textColor: 'white'
-      },
-      {
-        img: '/images/examples/3.png',
-        icon: '/icons/white/logo-a-medida.svg',
-        service: 'Logo a medida',
-        url: 'logo-empresa',
-        color: 'rgba(222, 58, 58, 0.80)',
-        textColor: 'white'
-      },
-      {
-        img: '/images/examples/4.png',
-        icon: '/icons/white/logo-y-web.svg',
-        service: 'Logo y sitio web',
-        url: 'diseno-logo-y-pagina-web',
-        color: 'rgba(222, 58, 58, 0.80)',
-        textColor: 'white'
-      },
-      {
-        img: '/images/examples/1.png',
-        icon: '/icons/white/vectorizacion.svg',
-        service: 'Vectorización',
-        url: 'vectorizacion',
-        color: 'rgba(222, 58, 58, 0.80)',
-        textColor: 'white'
-      },
-      {
-        img: '/images/examples/2.png',
-        icon: '/icons/white/perfil-red.svg',
-        service: 'Perfil Red',
-        url: 'diseno-perfil-redes-sociales',
-        color: 'rgba(222, 58, 58, 0.80)',
-        textColor: 'white'
-      },
-      {
-        img: '/images/examples/3.png',
-        icon: '/icons/white/publicidad.svg',
-        service: 'Publicidad',
-        url: 'publicidad',
-        color: 'rgba(222, 58, 58, 0.80)',
-        textColor: 'white'
-      },
-      {
-        img: '/images/examples/4.png',
-        icon: '/icons/white/app.svg',
-        service: 'App Movil',
-        url: 'diseno-de-app',
-        color: 'rgba(222, 58, 58, 0.80)',
-        textColor: 'white'
-      }
-    ],
-    [
-      { img: '/images/examples/5.png' },
-      { img: '/images/examples/6.png' },
-      { img: '/images/examples/7.png' },
-      { img: '/images/examples/8.png' },
-      { img: '/images/examples/5.png' },
-      { img: '/images/examples/6.png' },
-      { img: '/images/examples/7.png' },
-      { img: '/images/examples/8.png' },
-      { img: '/images/examples/5.png' },
-      { img: '/images/examples/6.png' },
-      { img: '/images/examples/7.png' },
-      { img: '/images/examples/8.png' }
-    ]
-  ]
+  relateds: []
 })
 
 export const mutations = {
@@ -125,61 +14,94 @@ export const mutations = {
     } else {
       state.list = data.portfolios
     }
+    // console.log('finishing')
+    pending = false
+  },
+  RELATEDS (state, data) {
+    state.relateds = data
   }
 }
 
 export const getters = {}
 
+var oldParams = {}
+
 export const actions = {
-  async getAll ({ rootGetters, commit }, params) {
+  async getAll ({ rootGetters, commit, state }, params) {
+    if (pending) return // console.log('pending')
+    pending = true
+
+    params.offset = state.list.length
+
     let requestParams = {}
+
     if (params) {
-      if (
-        params.servicio &&
-        rootGetters['services/getBySlug'](params.servicio)
-      ) {
-        requestParams['services'] = rootGetters['services/getBySlug'](
-          params.servicio
-        ).id
+      let resetOffset = false
+
+      if (params.servicio && rootGetters['services/getBySlug'](params.servicio)) {
+        let el = rootGetters['services/getBySlug'](params.servicio)
+        if (oldParams['services'] !== el.id) resetOffset = true
+        requestParams['services'] = el.id
       }
+
       if (params.sector && rootGetters['sectors/getBySlug'](params.sector)) {
-        requestParams['sectors'] = rootGetters['sectors/getBySlug'](
-          params.sector
-        ).id
+        let el = rootGetters['sectors/getBySlug'](params.sector)
+        if (oldParams['sectors'] !== el.id) resetOffset = true
+        requestParams['sectors'] = el.id
       }
-      if (
-        params.actividad &&
-        rootGetters['sectors/activities/getBySlug'](params.actividad)
-      ) {
-        requestParams['activities'] = rootGetters['sectors/activities/getBySlug'](params.actividad).id
+
+      if (params.actividad && rootGetters['countries/getBySlug'](params.actividad)) {
+        let el = rootGetters['countries/getBySlug'](params.actividad)
+        if (oldParams['countries'] !== el.id) resetOffset = true
+        requestParams['countries'] = el.id
       }
+
       if (params.pais && rootGetters['countries/getBySlug'](params.pais)) {
-        requestParams['countries'] = rootGetters['countries/getBySlug'](
-          params.pais
-        ).id
+        let el = rootGetters['countries/getBySlug'](params.pais)
+        if (oldParams['countries'] !== el.id) resetOffset = true
+        requestParams['countries'] = el.id
       }
-      if (
-        params.localidad &&
-        rootGetters['countries/locations/getBySlug'](params.localidad)
-      ) {
-        requestParams['locations'] = rootGetters['countries/locations/getBySlug'](params.localidad).id
+
+      if (params.localidad && rootGetters['countries/locations/getBySlug'](params.localidad)) {
+        let el = rootGetters['countries/locations/getBySlug'](params.localidad)
+        if (oldParams['locations'] !== el.id) resetOffset = true
+        requestParams['locations'] = el.id
+      }
+
+      if (resetOffset && params.offset !== 0) {
+        params.offset = 0
       }
     }
 
+    let portfolios
+
     try {
-      params.offset = params.offset || 0
       let url = 'portfolios/custom-search?offset=' + params.offset + '&limit=9'
 
-      let portfolios = await this.$axios.$get(url, {
+      portfolios = await this.$axios.$get(url, {
         params: requestParams
       })
+
+      oldParams = requestParams
 
       if (params.offset === 0) {
         return commit('GET_ALL', {portfolios: portfolios})
       }
+
       commit('GET_ALL', {portfolios: portfolios, push: true})
     } catch (error) {
       if (error.response.status === 404) commit('GET_ALL', {portfolios: [], push: true})
+    }
+  },
+  async getRelateds ({ rootGetters, commit, state }, params) {
+    let url = 'portfolios/custom-search?limit=8&service=' + params.serviceSlug
+
+    try {
+      let portfolios = await this.$axios.$get(url)
+      commit('RELATEDS', portfolios)
+    } catch (error) {
+      console.log(error)
+      commit('RELATEDS', [])
     }
   }
 }

@@ -44,10 +44,6 @@
       </v-flex>
     </v-layout>
 
-    <!-- PREGUNTAS FRECUENTES --> 
-    <v-layout>
-      <AppExpansionPanels title="PREGUNTAS FRECUENTES" v-if="frequentQuestions" :list="frequentQuestions" />
-    </v-layout>
 
     <v-layout row class="mt-5">
       <v-flex offset-md2 md8>
@@ -103,6 +99,12 @@
         />
       </v-flex>
     </v-layout>  
+
+    <!-- PREGUNTAS FRECUENTES --> 
+    <v-layout>
+      <AppExpansionPanels title="PREGUNTAS FRECUENTES" v-if="frequentQuestions" :list="frequentQuestions" />
+    </v-layout>
+    
     <v-layout row class="mt-5">
       <v-flex md6>
         <img src="~/assets/images/home/banner_contact.jpg" width="100%" height="100%">

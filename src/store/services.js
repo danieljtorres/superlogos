@@ -1,5 +1,3 @@
-import { groups as groupsHardcoded } from './data-app/groups'
-
 export const state = () => ({
   list: [],
   groups: [
@@ -11,16 +9,8 @@ export const state = () => ({
 })
 
 export const mutations = {
-  GET_GROUPS (state) {
-    for (let group of state.groups) {
-      let index = state.groups.findIndex(function (el) {
-        return el.slug === group.slug
-      })
-
-      if (groupsHardcoded[group.slug]) {
-        state.groups[index].data = groupsHardcoded[group.slug]
-      }
-    }
+  GET_ALL (state, services) {
+    state.list = services
   }
 }
 

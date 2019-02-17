@@ -4,7 +4,7 @@
     <AppHeading number="2" size="headline" color="#000000" title="PORTFOLIO"/>
     <v-container grid-list-xl class="my-4">
       <v-layout row wrap>
-        
+        <AppCarouselPortfolio/>
       </v-layout>
     </v-container>
     <v-layout row class="my-5">
@@ -104,7 +104,7 @@
     <v-layout>
       <AppExpansionPanels title="PREGUNTAS FRECUENTES" v-if="frequentQuestions" :list="frequentQuestions" />
     </v-layout>
-    
+
     <v-layout row class="mt-5">
       <v-flex md6>
         <img src="~/assets/images/home/banner_contact.jpg" width="100%" height="100%">

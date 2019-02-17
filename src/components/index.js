@@ -1,4 +1,5 @@
 export { default as AppCarousel } from './AppCarousel.vue'
+export { default as AppCarouselPortfolio } from './AppCarouselPortfolio.vue'
 
 export { default as AppHeading } from './AppHeading.vue'
 export { default as AppIconBox } from './AppIconBox.vue'

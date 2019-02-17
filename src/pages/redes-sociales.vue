@@ -1,6 +1,6 @@
 <template>
   <section class="logotipos">
-    <img src="~/assets/images/logotipos/banner_1.jpg" width="100%"/>
+    <img src="~/assets/images/social_media/banner_1.jpg" width="100%"/>
     <AppHeading number="1" size="headline" color="#000000" title="PORTFOLIO"/>
     <v-container grid-list-xl class="my-4">
       <v-layout row wrap>
@@ -43,7 +43,6 @@
         </v-container>
       </v-flex>
     </v-layout>
-
     <v-layout row class="mt-5">
       <v-flex offset-md2 md8>
         <AppHeading number="2" size="headline" color="#000000" title="PLANES DISPONIBLES"/>

@@ -1,7 +1,7 @@
 const nodeExternals = require('webpack-node-externals')
 
-let axiosUrl = 'http://api.liderlogos.com/v1/'
-if (process.env.NODE_ENV === 'production') axiosUrl = 'http://api.liderlogos.com/v1/'
+let axiosUrl = 'http://198.136.62.171:8080/v1/'
+if (process.env.NODE_ENV === 'production') axiosUrl = 'http://198.136.62.171:8080/v1/'
 
 module.exports = {
   srcDir: 'src/',

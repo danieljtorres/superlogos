@@ -43,6 +43,19 @@
       </v-flex>
     </v-layout>
     <v-layout row class="mt-5">
+      <v-flex offset-md2 md8>
+        <AppHeading number="2" size="headline" color="#000000" title="PAQUETES PARA USTED"/>
+        <AppServiceBox v-for="(service, index) in services" :key="index"
+          :title="service.name"
+          :description="service.description"
+          :price="service.price.value + ' ' + service.price.symbol"
+          :img="service.image"
+          :slug="service.slug"
+          :items="service.items"
+        />
+      </v-flex>
+    </v-layout>
+    <v-layout row class="mt-5">
       <v-flex md6>
         <img src="~/assets/images/home/banner_contact.jpg" width="100%" height="100%">
       </v-flex>
@@ -79,6 +92,81 @@
           { title: 'ATENCIÓN PERZONALIZADA' },
           { title: 'ATENCIÓN PERZONALIZADA' },
           { title: 'ATENCIÓN PERZONALIZADA' }
+        ],
+        services: [
+          {
+            name: 'CORPORATIVO',
+            price: {
+              value: 320.00,
+              symbol: '$'
+            },
+            description: 'Nuestro servicio cuenta con las herramientas necesarias para realizar un diseño web que promueva la usabilidad en su portal. Incluimos una estructura basada en su marca, desde el menú hasta elementos gráficos que harán una navegación amigable, permitiendo alcanzar numerosas visitas y captar de inmediato la atención de los usuarios. Incluye:',
+            items: [
+              'Registro de dominio WEB.',
+              'Alojamiento hosting del Sitio web 1 año GRATIS.',
+              'Su web Posicionada en google.',
+              'Adaptada a Cualquier resolución.',
+              'Chat online desde aplicación móvil.',
+              'Mapa interactivo Google Map.',
+              'Emails institucionales.'
+            ],
+            image: `/images/diseno-web/packages/1.jpg`
+          },
+          {
+            name: 'CORPORATIVO PREMIUM',
+            price: {
+              value: 400.00,
+              symbol: '$'
+            },
+            description: 'Además de incluir los beneficios expresados en la página web corporativa, en cuanto a estructura de proramación, se garantiza el diseño de la identidad corporativa en función de las necesidades existentes. Nuestro equipo se encargará de diseñar todos los elementos gráficos que son indispensables dentro de la empresa.',
+            items: [
+              'Registro de dominio WEB.',
+              'Alojamiento hosting del Sitio web 1 año GRATIS.',
+              'Su web Posicionada en google.',
+              'Adaptada a Cualquier resolución.',
+              'Chat online desde aplicación móvil.',
+              'Mapa interactivo Google Map.',
+              'Emails institucionales.'
+            ],
+            image: `/images/diseno-web/packages/2.jpg`
+          },
+          {
+            name: 'TIENDA VIRTUAL',
+            price: {
+              value: 400.00,
+              symbol: '$'
+            },
+            description: 'Su página web invitará de inmediato a los clientes a cerrar negocios, de forma segura y confiable en un tiempo récord, sin tanto protocolo. Contamos con un software de comercio electrónico que garantiza seguridad en cada una de las transacciones, pues el objetivo siempre será la venta y el retorno del cliente. Incluye:',
+            items: [
+              'Control total de su tienda.',
+              'Control de inventario, ventas, pedidos y contabilidad.',
+              'Métodos de pago nacionales e internacionales.',
+              'Confiuración de envio con precios variables o fijos.',
+              'Cupones de descuentos o promocionales.',
+              'URLS amiables, integración con Goole Analytics, estadísticas de clientes.',
+              'Múltiples divisas.',
+              'Notificaciones, paos, retornos, cancelación y más.',
+              'Modulo de búsqueda rápida de productos.',
+              'Modelos de productos destacados últimos añadidos, aleatorios, mejor valorados o relacionados.',
+              'Modulo de valoración y comentarios de los productos por el cliente.'
+            ],
+            image: `/images/diseno-web/packages/3.jpg`
+          },
+          {
+            name: 'SITIO WEB EN BASE A PLANTILLA',
+            price: {
+              value: 400.00,
+              symbol: '$'
+            },
+            description: 'Todo el contenido que recibirán los usuarios será de su interés para lograr el intercambio de información. El diseño web en wordpress realiado por nuestro staff tendrá modulos que invitara a los potenciales clientes a llenar un formulario para recibir información o datos personalizados sobre el producto o servicio ofreacido de forma digital. Características:',
+            items: [
+              'Contenido interactivo y dinámico.',
+              'Con una estructura clara, sencilla y concreta.',
+              'Formulario preciso y sencillo.',
+              'Optimizada para cualquier objetivo de marketing'
+            ],
+            image: `/images/diseno-web/packages/4.jpg`
+          }
         ]
       }
     },

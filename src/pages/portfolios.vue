@@ -2,15 +2,19 @@
   <section>
     <v-container grid-list-md class="ejemplos">
       <v-layout row wrap>
-        <v-flex xs12 class="my-3 py-5 xs-pb-0"></v-flex>
+      <v-flex xs12 class="my-3 py-3 xs-pb-0"></v-flex>
+        
+      <AppHeading v-if="portfolios && portfolios.length" class="mb-5" size="display-1" number="2" title="PORTFOLIOS" />
+      <AppHeading v-if="!portfolios.length" class="mb-2 pt-4 " size="display-1" number="2" title="No se encontraron portfolios" />
+
         <!-- <v-flex xs12>
           <AppFilterExamplesForm :params="params" :count="portfolios.length" />
         </v-flex> -->
         <v-layout xs12 row wrap class="portfolios" v-if="portfolios && portfolios.length">
-          <v-flex @click="goPortfolio('/ejemplo/'+ portfolio.service.slug +'/'+ portfolio.slug, portfolio)" v-for="(portfolio, key) in portfolios" :key="portfolio.id + key" xs12 sm6 md4 class="pr-2 pointer">
+          <v-flex @click="goPortfolio('/portfolio/'+ portfolio.service.slug +'/'+ portfolio.slug, portfolio)" v-for="(portfolio, key) in portfolios" :key="portfolio.id + key" xs12 sm6 md4 class="pr-2 pointer">
             <v-card height="auto">
               <div class="img-cuadrada-ejemplos-container" >
-                  <svg role="img" :aria-label="portfolio.name" :alt="portfolio.name" class="img-cuadrada-ejemplos" style="border-bottom: 1px solid #6a6a6a38;" viewBox="0 0 100 100 " :style="'background: url('+ urlHosting + portfolio.images[0].slug+')'"></svg>
+                  <svg role="img" :aria-label="portfolio.name" :alt="portfolio.name" class="img-cuadrada-ejemplos" style="border-bottom: 1px solid #6a6a6a38;" viewBox="0 0 100 100 " v-if="portfolio.images" :style="'background: url('+ urlHosting + portfolio.images[0].slug+')'"></svg>
               </div>
               <v-flex class="my-0">
                 <h2 class="mb-1 px-1 text-xs-center subheading font-weight-medium">{{portfolio.name}}</h2>
@@ -21,11 +25,18 @@
             </v-card>
           </v-flex>
         </v-layout>
-        <v-flex v-if="!portfolios.length">
-          <h1 class="text-xs-center">No se encontraron portfolios</h1>
-        </v-flex>
       </v-layout>
     </v-container>
+
+    <!--CLIENTES-->
+    <v-layout row wrap class="mt-5">
+      <v-flex md6 xs12>
+        <img src="~/assets/images/home/banner_contact.jpg" width="100%" height="100%">
+      </v-flex>
+      <v-flex md6 xs12>
+        <AppContactForm/>
+      </v-flex>
+    </v-layout>
   </section>
 </template>
 
@@ -43,9 +54,6 @@
       return { params: params }
     },
     async fetch ({ store, params }) {
-      await store.dispatch('services/getAll')
-      await store.dispatch('sectors/getAll')
-      await store.dispatch('countries/getAll')
       await store.dispatch('portfolios/getAll', params)
     },
     mounted: function () {
@@ -55,7 +63,6 @@
           var scrollPosition = document.documentElement.scrollTop + window.innerHeight
 
           var bottomOfWindow = scrollPosition + 600 >= offsetHeight
-          // console.log(bottomOfWindow)
           if (bottomOfWindow && this.portfolios.length >= 9) {
             console.log('listing')
             this.$store.dispatch('portfolios/getAll', this.params)

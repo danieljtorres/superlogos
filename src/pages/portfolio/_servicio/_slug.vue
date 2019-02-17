@@ -57,7 +57,7 @@
         <!-- RELACIONADOS -->
         <AppHeading v-if="portfolios && portfolios.length" class="mb-5" size="display-1" number="2" title="EJEMPLOS RELACIONADOS" />
         <v-layout v-if="portfolios && portfolios.length" xs12 row wrap class="portfolios mb-5">
-          <v-flex @click="goPortfolio('/ejemplo/'+ item.service.slug +'/'+ item.slug, item)"  v-for="(item) in portfolios.slice(0,3)" :key="item.id" xs12 sm6 md4 class="pr-2">
+          <v-flex @click="goPortfolio('/portfolio/'+ item.service.slug +'/'+ item.slug, item)"  v-for="(item) in portfolios.slice(0,3)" :key="item.id" xs12 sm6 md4 class="pr-2">
             <v-card>
               <div class="img-cuadrada-ejemplos-container" >
                   <svg role="img" :aria-label="item.name + ' Imagen'" :alt="item.name + ' Imagen'" class="img-cuadrada-ejemplos" style="border-bottom: 1px solid #6a6a6a38;" viewBox="0 0 100 100 " :style="'background: url('+ urlHosting + item.images[0].slug+')'"></svg>
@@ -72,30 +72,18 @@
             </v-card>
           </v-flex>
         </v-layout>
+      </v-layout>
+    </v-container>
 
-        <v-flex  xs12 class="my-3">
-          <v-layout xs12 row wrap justify-center>
-            <v-btn class="arrow-left subheading" color="#0081c1" dark depressed large :to="'/nuestros-servicios/'+ serviceSlug">
-              CONOCER MAS SOBRE EL SERVICIO
-            </v-btn>
-            <v-btn class="arrow-right subheading" color="rgb(247, 148, 29)" depressed dark large="" @click="selectService()">
-              INICIAR MI PROYECTO AHORA
-            </v-btn>
-          </v-layout>
-        </v-flex>
-      </v-layout>
-    </v-container>
-    <v-container fluid grid-list-md>
-      <v-layout row wrap>
-        <v-flex xs12 md5 >
-          <img src="/images/pages/muchacho_contacto.png" width="100%">
-        </v-flex>
-        <v-flex xs12 md6 class="mt-5 xs-mt-0">
-          <h2 class="display-2 font-weight-bold mb-4 text-uppercase text-xs-center" style=" color: #434343;">¿TIENES ALGUNA DUDA?</h2>
-          <AppContactForm :page="'ejemplo portfolio ' + portfolio.name" />
-        </v-flex>
-      </v-layout>
-    </v-container>
+    <!--CLIENTES-->
+    <v-layout row wrap class="mt-5">
+      <v-flex md6 xs12>
+        <img src="~/assets/images/home/banner_contact.jpg" width="100%" height="100%">
+      </v-flex>
+      <v-flex md6 xs12>
+        <AppContactForm/>
+      </v-flex>
+    </v-layout>
   </section>
 </template>
 
@@ -113,20 +101,6 @@
       }
     },
     methods: {
-      async selectService () {
-        const brief = { service: { id: this.portfolio.service.id, name: this.portfolio.service.name, slug: this.portfolio.service.slug }, designs: [], styles: {}, colors: [], customColors: '', information: {} }
-        var target = null
-        // TODO: PENDIENTE
-        if (this.serviceSlug === 'logo-y-pagina-web' || this.serviceSlug === 'pagina-web') {
-          brief.subServices = []
-          target = 'cotizacion'
-        } else {
-          target = 'brief/disenos'
-        }
-
-        this.$storage.set('brief', brief)
-        this.$router.push('/nuestros-servicios/' + this.serviceSlug + '/' + target)
-      },
       goPortfolio (url, portfolio) {
         if (process.browser) {
           localStorage.setItem('liderlogo_selected_portfolio', JSON.stringify(portfolio))
@@ -137,17 +111,7 @@
     },
     data () {
       return {
-        urlHosting: 'http://api.liderlogos.com/v1/images/slug/'
-      }
-    },
-    head () {
-      return {
-        titleTemplate: this.portfolio ? this.portfolio.name + ' | %s' : '' || 'Ejemplo | %s',
-        meta: [
-          { property: 'og:title', content: this.portfolio ? this.portfolio.name : '' || 'Ejemplo' },
-          { property: 'og:description', content: this.portfolio ? this.portfolio.description : '' || 'Ejemplo' },
-          { hid: 'description', name: 'description', content: this.portfolio ? this.portfolio.description : '' || 'Ejemplo' }
-        ]
+        urlHosting: 'http://198.136.62.171:8080/v1/images/slug/'
       }
     },
     computed: {
@@ -170,21 +134,6 @@
           }
         })
         return portfolios
-      },
-      briefUrl () {
-        /* TODO: */
-        if (this.service === 'logo-y-pagina-web' || this.service === 'pagina-web') {
-          return 'cotizacion'
-        } else {
-          return 'brief/disenos'
-        }
-      }
-    },
-    validate ({ params, store }) {
-      let exists = store.state.app.staticData.services[params.servicio] || false
-
-      if (exists) {
-        return true
       }
     }
   }

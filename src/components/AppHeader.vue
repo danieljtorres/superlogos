@@ -18,10 +18,10 @@
           </v-list-tile>
         </v-list>
       </v-menu>
-      <v-btn class="nav-item mx-0" nuxt to="portfolio" flat>
+      <v-btn class="nav-item mx-0" nuxt to="/portfolios" flat>
         <span class="nav-item-label">PORTFOLIO</span>
       </v-btn>
-      <v-btn class="nav-item mx-0" nuxt to="contacto" flat>
+      <v-btn class="nav-item mx-0" nuxt to="/contacto" flat>
         <span class="nav-item-label">CONTACTO</span>
       </v-btn>
     </div>

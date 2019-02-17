@@ -1,10 +1,27 @@
+import { default as logotipos } from './data-app/logotipos.js'
+import { default as disenoWeb } from './data-app/diseno-web.js'
+import { default as redesSociales } from './data-app/redes-sociales.js'
+import { default as rotulos } from './data-app/rotulos.js'
+
 export const state = () => ({
   list: [],
   groups: [
-    { slug: 'logos' },
-    { slug: 'diseno-web' },
-    { slug: 'rotulos' },
-    { slug: 'redes-sociales' }
+    {
+      slug: 'logos',
+      data: logotipos
+    },
+    {
+      slug: 'diseno-web',
+      data: disenoWeb
+    },
+    {
+      slug: 'rotulos',
+      data: rotulos
+    },
+    {
+      slug: 'redes-sociales',
+      data: redesSociales
+    }
   ]
 })
 

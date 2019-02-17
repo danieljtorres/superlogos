@@ -1,5 +1,8 @@
+var pending = false
+
 export const state = () => ({
-  list: []
+  list: [],
+  relateds: []
 })
 
 export const mutations = {
@@ -11,13 +14,17 @@ export const mutations = {
     } else {
       state.list = data.portfolios
     }
+    // console.log('finishing')
+    pending = false
+  },
+  RELATEDS (state, data) {
+    state.relateds = data
   }
 }
 
 export const getters = {}
 
 var oldParams = {}
-var pending = false
 
 export const actions = {
   async getAll ({ rootGetters, commit, state }, params) {

@@ -70,9 +70,6 @@
         ]
       }
     },
-    async fetch ({ store, params }) {
-      await store.commit('services/GET_GROUPS')
-    },
     data () {
       return {
         name: 'LOGOTIPOS',

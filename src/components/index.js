@@ -8,3 +8,4 @@ export { default as AppExpansionPanels } from './AppExpansionPanels.vue'
 
 // FORMS
 export { default as AppContactForm } from './Forms/AppContactForm.vue'
+export { default as AppClients } from './AppClients.vue'

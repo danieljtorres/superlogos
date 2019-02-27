@@ -5,7 +5,8 @@ import {
   AppHomeServiceBox,
   AppServiceBox,
   AppContactForm,
-  AppExpansionPanels
+  AppExpansionPanels,
+  AppClients
 } from '@/components'
 
 Vue.component('AppHeading', AppHeading)
@@ -14,3 +15,4 @@ Vue.component('AppHomeServiceBox', AppHomeServiceBox)
 Vue.component('AppServiceBox', AppServiceBox)
 Vue.component('AppContactForm', AppContactForm)
 Vue.component('AppExpansionPanels', AppExpansionPanels)
+Vue.component('AppClients', AppClients)

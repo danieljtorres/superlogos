@@ -1,7 +1,8 @@
 export default {
   title: 'ROTULADO',
-  description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an  unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged`,
-  shortDescription: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`,
+  description: `Ponemos a su disposición diseños modernos y creativos para rotulado de vehículos, muéstrese en las calles con una estética profesional y adaptada a sus necesidades y expectativas. Le damos a su flota de transporte la mejor identidad visual, haciendo que su negocio deje huella a donde quiera que vaya.
+  `,
+  shortDescription: `Destáquese y resalte su marca a donde quiera que vaya con el diseño de los mejores rótulos.`,
   image: '4.jpg',
   image2: '4_4.jpg',
   frequentQuestions: [

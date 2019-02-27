@@ -1,7 +1,8 @@
 export default {
   title: 'REDES SOCIALES',
-  description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an  unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged`,
-  shortDescription: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`,
+  description: `En la actualidad, las redes sociales representan un impacto notorio en la credibilidad de las empresas, a su vez, funciona como puente para tener un enlace directo con los clientes y la interacción se haga notar. Confíanos la estética y manejo de sus redes sociales y demuestre su calidad en todos los medios conocidos.
+ `,
+  shortDescription: `Que su empresa sea líder en facebook, twitter e instagram, no espere más y ¡solicite nuestros servicios!`,
   image: '3.jpg',
   image2: '3_3.jpg',
   frequentQuestions: [

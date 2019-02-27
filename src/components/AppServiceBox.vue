@@ -1,12 +1,12 @@
 <template>
   <v-layout row wrap class="single-service-box">
-    <v-flex md6>
+    <v-flex offset-xs2 xs8 md6 class="mb-xs-30">
       <img :src="img" width="100%" v-if="img">
       <div class="single-service-box-button">
         <v-btn color="primary">¡Empezar ya!</v-btn>
       </div>
     </v-flex>
-    <v-flex md6 class="service-info">
+    <v-flex offset-xs1 xs10 md6 class="service-info">
       <h2 class="title-service-box">{{ title }}</h2>
       <h2 class="price-service-box">{{ price }}</h2>
       <p class="description-service-box">{{ description }}</p>

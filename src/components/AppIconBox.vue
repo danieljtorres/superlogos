@@ -1,6 +1,6 @@
 <template>
   <div class="work-table">
-    <img :src="require(`~/assets/images/home/icons/${iconName}`)">
+    <img :src="require(`~/assets/images/home/icons/${iconName}`)" width="80px">
     <p class="title font-weight-bold">{{ title }}</p>
     <p v-if="description" class="description text-xs-justify">{{ description }}</p>
     <v-btn v-if="button">{{ button }}</v-btn>
@@ -21,6 +21,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    white-space: normal;
   }
 
   .work-table p.title::before {
@@ -35,5 +36,12 @@
   .work-table p.description {
     line-height: 20px;
     height: 60px;
+    white-space: normal;
+  }
+
+  @media all and (min-width: 320px) and (max-width: 640px) {
+    .work-table p.description {
+      padding: 0 30px;
+    }
   }
 </style>

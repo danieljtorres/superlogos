@@ -124,3 +124,76 @@ a {
   .example-slider-item:hover .hidden-box{
     opacity:1;
   }
+
+  .top-padding{
+    padding-top: 150px; 
+  }
+
+  .bottom-padding{
+    padding-bottom: 150px; 
+  }
+
+  .top-bottom-padding{
+    padding-top: 150px; 
+    padding-bottom: 150px; 
+  }
+
+  .default-title{
+    font-size: 30px !important;
+  }
+
+  .text-black{
+    color: #000000 !important;
+  }
+
+  hr.service-hr {
+    margin: 80px 0;
+    background: silver;
+    height: 2px;
+    border: none;
+    }
+
+.banner {
+    background-size: 100% 100%;
+    background-position: center;
+    height: 600px;
+}
+
+@media all and (min-width: 680px) {
+    .br-md{
+        border-right: 1px solid #ebebeb;
+    }
+}
+
+@media all and (min-width: 320px) and (max-width: 700px) {
+    .banner.width-menu{
+        margin-top: 70px;
+    }
+
+    .banner {
+        background-size: cover;
+        height: 300px;
+    }
+
+    .top-padding{
+        padding-top: 100px; 
+    }
+
+    .bottom-padding{
+        padding-bottom: 100px; 
+    }
+
+    .top-bottom-padding{
+        padding-top: 100px; 
+        padding-bottom: 100px; 
+    }
+
+    .default-title{
+        font-size: 26px !important;
+    }
+
+    .mb-xs-30{
+        margin-bottom: 30px;
+    }
+    
+}

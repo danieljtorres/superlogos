@@ -20,7 +20,7 @@
         </v-flex>
         <v-flex xs12 md5 class="pl-3 mt-5 pl-xs-1 mt-xs-0" style="position:relative;">
           <div class="box-sticky">
-            <AppHeading number="1" size="headline" :title="portfolio.name" align="center"/>
+            <AppHeading number="1" size="default-title" :title="portfolio.name" align="center"/>
             <p class="text-xs-justify mt-3" style="font-weight:500;">
               {{portfolio.description}}
             </p>

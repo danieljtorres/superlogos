@@ -39,5 +39,75 @@ export default {
       question: '¿Cómo puedo abonar mi proyecto?',
       response: 'Se abona 50% al comenzar y el saldo al concluir de la manera que usted prefiera: transferencia, deposito, tarjeta de crédito, PayPal, etc.'
     }
+  ],
+  services: [
+    {
+      slug: 'superlogo',
+      not_visible: true
+    },
+    {
+      slug: 'rediseno-de-logo',
+      not_visible: true
+    },
+    {
+      name: 'LOGO + PAPELERÍA',
+      slug: 'logo-papeleria',
+      price: {
+        value: 119.00,
+        symbol: '$'
+      },
+      description: 'Diseñamos el logo ideal para su marca, mostrándole la mayor estética gracias al profesionalismo que nos caracteriza, dando como resultado una imagen que represente sus productos o servicios. Este paquete viene acompañado de tres (3) elementos de papelería para su identidad, donde podrá escoger entre:',
+      items: [
+        'Tarjetas de presentación.',
+        'Carpeta Corporativa.',
+        'Sobre corporativo.',
+        'Hoja membretada.',
+        'Flyer.',
+        'Factura.',
+        'Pendon.'
+      ],
+      image: `/images/logotipos/packages/1.jpg`
+    },
+    {
+      name: 'LOGO + MATERIAL POP',
+      slug: 'logo-material-pop',
+      price: {
+        value: 119.00,
+        symbol: '$'
+      },
+      description: 'Diseñamos el logo ideal para su marca, mostrándole la mayor estética gracias al profesionalismo que nos caracteriza, dando como resultado una imagen que represente sus productos o servicios. Este paquete viene acompañado de tres (3) elementos de material pop para su identidad, donde podrá escoger entre ESTAMPADOS PARA:',
+      items: [
+        'Camisas.',
+        'Gorras.',
+        'Transporte.',
+        'Tazas.',
+        'Lapiceros.',
+        'Carteras.',
+        'Chapas.'
+      ],
+      image: `/images/logotipos/packages/2.jpg`
+    },
+    {
+      name: 'LOGO + BROCHURE',
+      slug: 'logo-brochure',
+      price: {
+        value: 119.00,
+        symbol: '$'
+      },
+      description: 'Diseñamos el logo ideal para su marca, mostrándole la mayor estética gracias al profesionalismo que nos caracteriza, dando como resultado una imagen que represente sus productos o servicios. Este paquete viene acompañado con un brochore personalizado para su empresa, este es una especie de catálogo donde usted podrá mostrar todos los productos o servicios que ofrece su marca en un formato perfectamente diagramado y elaborado con la mayor dedicación.',
+      items: [],
+      image: `/images/logotipos/packages/3.jpg`
+    },
+    {
+      name: 'LOGO + PACKAGING',
+      slug: 'logo-packaging',
+      price: {
+        value: 119.00,
+        symbol: '$'
+      },
+      description: 'Diseñamos el logo ideal para su marca, mostrándole la mayor estética gracias al profesionalismo que nos caracteriza, dando como resultado una imagen que represente sus productos o servicios. Este paquete viene acompañado del diseño personalizado del empaque de su producto. Recuerde que la primera impresión es la que cuenta, y si desea que su producto genere impacto, debe confiar su imagen al mejor equipo de trabajo, ¡nosotros!',
+      items: [],
+      image: `/images/logotipos/packages/4.jpg`
+    }
   ]
 }

@@ -50,10 +50,10 @@
     <v-layout row class="mt-5">
       <v-flex offset-md2 md8>
         <AppHeading number="2" size="default-title" color="#000000" title="PLANES DISPONIBLES"/>
-        <AppServiceBox v-for="(service, index) in services" :key="index"
+        <AppServiceBox v-for="(service, index) in group.data.services" :key="index"
           :title="service.name"
           :description="service.description"
-          :price="service.price.value + ' ' + service.price.symbol"
+          :price="service.price.value + ' ' + service.price.currency.symbol"
           :img="service.image"
           :slug="service.slug"
           :items="service.items"
@@ -87,6 +87,9 @@
         ]
       }
     },
+    async fetch ({ store, params }) {
+      await store.dispatch('services/getAll')
+    },
     data () {
       return {
         name: 'LOGOTIPOS',
@@ -98,62 +101,6 @@
           { title: '+40 PROFESIONALES', text: 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum' },
           { title: 'DISEÑOS DE UN DÍA PARA OTRO', text: 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum' },
           { title: 'ATENCIÓN PERZONALIZADA', text: 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum' }
-        ],
-        services: [
-          {
-            name: 'EMPRENDEDOR',
-            price: {
-              value: 170.00,
-              symbol: '$'
-            },
-            description: '',
-            items: [
-              '1 Redes sociales (Facebook, Instagram o Twitter).',
-              'Diseño simple de portadas.',
-              '1 Publicación diaria (por red social).',
-              'Interacción continua y estión de la reputación.',
-              'Diseño de publicaciones y programación de contenido.',
-              'Informe trimestral de estadísticas.',
-              'Bonus 10 usd (publicidad Facebook ads).'
-            ],
-            image: `/images/social-media/packages/1.png`
-          },
-          {
-            name: 'EMPRESARIAL',
-            price: {
-              value: 250.00,
-              symbol: '$'
-            },
-            description: '',
-            items: [
-              '2 Redes sociales (Facebook, Instagram o Twitter).',
-              'Diseño personalizado de portadas.',
-              '2 Publicación diarias.',
-              'Interacción continua y gestión de la reputación.',
-              'Plan de redes, diseño de publicaciones y programación de contenido.',
-              'Informe trimestral.',
-              'Atención al cliente (respuesta inmediata).',
-              'Bonus 10 usd (publicidad Facebook ads).'
-            ],
-            image: `/images/social-media/packages/2.png`
-          },
-          {
-            name: 'EMPRESARIAL PREMIUM',
-            price: {
-              value: 399.00,
-              symbol: '$'
-            },
-            description: '',
-            items: [
-              '3 Redes sociales (Facebook, Instagram y Twitter).',
-              'Diseño personalizado de portadas.',
-              '2 Publicación diarias.',
-              'Estrategia de redes, diseño de publicaciones y programación de contenido.',
-              'Atención al cliente (respuesta inmediata).',
-              'Creación de estrategias plataformas pagas.'
-            ],
-            image: `/images/social-media/packages/3.png`
-          }
         ]
       }
     },
@@ -161,6 +108,9 @@
       group () {
         console.log(this.$store.state)
         return this.$store.state.services.groups.find(el => el.slug === 'diseno-web')
+      },
+      servicesDB () {
+        return this.$store.state.services.list
       }
     }
   }

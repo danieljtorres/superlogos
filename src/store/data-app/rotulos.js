@@ -31,5 +31,37 @@ export default {
       question: '¿Cómo y en qué formatos recibo el diseño final?',
       response: 'En su email en formatos AI (archivo editable con el programa Adobe Illustrator), EPS (archivo editable en imprentas) y PDF.'
     }
+  ],
+  services: [
+    {
+      name: 'ROTULADO VEHICULAR',
+      slug: 'rotulado-vehicular',
+      price: {
+        value: 99.00,
+        symbol: '$'
+      },
+      description: 'Diseñamos el rótulo ideal para su vehículo, que lo haga dejar huella a donde quiera que vaya. Dele identidad a su auto. Este paquete incluye el diseño de rotulado para un solo modelo de auto.',
+      image: `/images/rotulos/packages/1.png`
+    },
+    {
+      name: 'ROTULADO PARA VAN',
+      slug: 'rotulado-para-van',
+      price: {
+        value: 109.00,
+        symbol: '$'
+      },
+      description: 'Creamos la imagen ideal para su van. Reciba el diseño de rotulado de su vehículo de transporte. Ideal para nuevas empresas. Este paquete incluye el diseño de rótulo para un solo modelo de van.',
+      image: `/images/rotulos/packages/2.jpg`
+    },
+    {
+      name: 'ROTULADO PARA FLOTA',
+      slug: 'rotulado-flota',
+      price: {
+        value: 199.00,
+        symbol: '$'
+      },
+      description: '¡Es momento de que su empresa se haa notar en las calles! Influye el diseño de rotulos para cuatro modelos de vehículo, diseños distintos para cada unidad, todos bajo  la estética de su imagen como su marca',
+      image: `/images/rotulos/packages/3.png`
+    }
   ]
 }

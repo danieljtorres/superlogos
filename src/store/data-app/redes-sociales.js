@@ -28,5 +28,64 @@ export default {
       question: '¿Pueden diseñar contenidos para mi perfil de red social?',
       response: 'Podemos diseñarlos, solicite una propuesta comercial al respecto.'
     }
+  ],
+  services: [
+    {
+      name: 'EMPRENDEDOR',
+      slug: 'emprendedor',
+      price: {
+        value: 170.00,
+        symbol: '$'
+      },
+      description: '',
+      items: [
+        '1 Redes sociales (Facebook, Instagram o Twitter).',
+        'Diseño simple de portadas.',
+        '1 Publicación diaria (por red social).',
+        'Interacción continua y estión de la reputación.',
+        'Diseño de publicaciones y programación de contenido.',
+        'Informe trimestral de estadísticas.',
+        'Bonus 10 usd (publicidad Facebook ads).'
+      ],
+      image: `/images/social-media/packages/1.png`
+    },
+    {
+      name: 'EMPRESARIAL',
+      slug: 'empresarial',
+      price: {
+        value: 250.00,
+        symbol: '$'
+      },
+      description: '',
+      items: [
+        '2 Redes sociales (Facebook, Instagram o Twitter).',
+        'Diseño personalizado de portadas.',
+        '2 Publicación diarias.',
+        'Interacción continua y gestión de la reputación.',
+        'Plan de redes, diseño de publicaciones y programación de contenido.',
+        'Informe trimestral.',
+        'Atención al cliente (respuesta inmediata).',
+        'Bonus 10 usd (publicidad Facebook ads).'
+      ],
+      image: `/images/social-media/packages/2.png`
+    },
+    {
+      name: 'EMPRESARIAL PREMIUM',
+      slug: 'empresarial-premium',
+      price: {
+        value: 399.00,
+        symbol: '$'
+      },
+      description: '',
+      items: [
+        '3 Redes sociales (Facebook, Instagram y Twitter).',
+        'Diseño personalizado de portadas.',
+        '2 Publicación diarias.',
+        'Estrategia de redes, diseño de publicaciones y programación de contenido.',
+        'Atención al cliente (respuesta inmediata).',
+        'Creación de estrategias plataformas pagas.'
+      ],
+      image: `/images/social-media/packages/3.png`
+    }
   ]
 }

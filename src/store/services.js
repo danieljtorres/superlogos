@@ -28,6 +28,16 @@ export const state = () => ({
 export const mutations = {
   GET_ALL (state, services) {
     state.list = services
+
+    state.groups.forEach(group => {
+      group.data.services.forEach(service => {
+        state.list.forEach(serviceDB => {
+          if (serviceDB.slug === service.slug) {
+            service.price = serviceDB.price
+          }
+        })
+      })
+    })
   }
 }
 

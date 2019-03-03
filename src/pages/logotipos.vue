@@ -54,7 +54,7 @@
         <div class="principal-services-logo">
           <div class="principal-services-logo-item">
             <h2 class="principal-services-logo-title">SUPER<b>LOGO</b></h2>
-            <h2 class="principal-services-logo-price">99$</h2>
+            <h2 class="principal-services-logo-price" v-if="superlogo">{{superlogo.price.value + ' ' + superlogo.price.currency.symbol}}</h2>
             <div class="principal-services-logo-description">
               Diseños originales.<br>
               Diseño listo en 24 horas.<br>
@@ -74,7 +74,7 @@
           </div>
           <div class="principal-services-logo-item">
             <h2 class="principal-services-logo-title">REDISEÑO DE <b>LOGO</b></h2>
-            <h2 class="principal-services-logo-price">99$</h2>
+            <h2 class="principal-services-logo-price" v-if="rediseno">{{rediseno.price.value + ' ' + rediseno.price.currency.symbol}}</h2>
             <div class="principal-services-logo-description">
               Calidad en refrescamiento de imagen.<br>
               Diseño listo en 24 horas.<br>
@@ -92,13 +92,14 @@
         </div>
 
         <AppHeading number="2" size="default-title" color="#000000" title="PAQUETES PARA USTED"/>
-        <AppServiceBox v-for="(service, index) in services" :key="index"
+        <AppServiceBox v-for="(service, index) in group.data.services" :key="index"
           :title="service.name"
           :description="service.description"
-          :price="service.price.value + ' ' + service.price.symbol"
+          :price="service.price"
           :img="service.image"
           :slug="service.slug"
           :items="service.items"
+          :not_visible="service.not_visible || false"
         />
       </v-flex>
     </v-layout>  
@@ -130,6 +131,7 @@
       }
     },
     async fetch ({ store, params }) {
+      await store.dispatch('services/getAll')
     },
     data () {
       return {
@@ -142,71 +144,22 @@
           { title: '+40 PROFESIONALES', text: 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum' },
           { title: 'DISEÑOS DE UN DÍA PARA OTRO', text: 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum' },
           { title: 'ATENCIÓN PERZONALIZADA', text: 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum' }
-        ],
-        services: [
-          {
-            name: 'LOGO + PAPELERÍA',
-            price: {
-              value: 119.00,
-              symbol: '$'
-            },
-            description: 'Diseñamos el logo ideal para su marca, mostrándole la mayor estética gracias al profesionalismo que nos caracteriza, dando como resultado una imagen que represente sus productos o servicios. Este paquete viene acompañado de tres (3) elementos de papelería para su identidad, donde podrá escoger entre:',
-            items: [
-              'Tarjetas de presentación.',
-              'Carpeta Corporativa.',
-              'Sobre corporativo.',
-              'Hoja membretada.',
-              'Flyer.',
-              'Factura.',
-              'Pendon.'
-            ],
-            image: `/images/logotipos/packages/1.jpg`
-          },
-          {
-            name: 'LOGO + MATERIAL POP',
-            price: {
-              value: 119.00,
-              symbol: '$'
-            },
-            description: 'Diseñamos el logo ideal para su marca, mostrándole la mayor estética gracias al profesionalismo que nos caracteriza, dando como resultado una imagen que represente sus productos o servicios. Este paquete viene acompañado de tres (3) elementos de material pop para su identidad, donde podrá escoger entre ESTAMPADOS PARA:',
-            items: [
-              'Camisas.',
-              'Gorras.',
-              'Transporte.',
-              'Tazas.',
-              'Lapiceros.',
-              'Carteras.',
-              'Chapas.'
-            ],
-            image: `/images/logotipos/packages/2.jpg`
-          },
-          {
-            name: 'LOGO + BROCHURE',
-            price: {
-              value: 119.00,
-              symbol: '$'
-            },
-            description: 'Diseñamos el logo ideal para su marca, mostrándole la mayor estética gracias al profesionalismo que nos caracteriza, dando como resultado una imagen que represente sus productos o servicios. Este paquete viene acompañado con un brochore personalizado para su empresa, este es una especie de catálogo donde usted podrá mostrar todos los productos o servicios que ofrece su marca en un formato perfectamente diagramado y elaborado con la mayor dedicación.',
-            items: [],
-            image: `/images/logotipos/packages/3.jpg`
-          },
-          {
-            name: 'LOGO + PACKAGING',
-            price: {
-              value: 119.00,
-              symbol: '$'
-            },
-            description: 'Diseñamos el logo ideal para su marca, mostrándole la mayor estética gracias al profesionalismo que nos caracteriza, dando como resultado una imagen que represente sus productos o servicios. Este paquete viene acompañado del diseño personalizado del empaque de su producto. Recuerde que la primera impresión es la que cuenta, y si desea que su producto genere impacto, debe confiar su imagen al mejor equipo de trabajo, ¡nosotros!',
-            items: [],
-            image: `/images/logotipos/packages/4.jpg`
-          }
         ]
       }
     },
     computed: {
       group () {
         console.log(this.$store.state)
-        return this.$store.state.services.groups.find(el => el.slug === 'diseno-web')
+        return this.$store.state.services.groups.find(el => el.slug === 'logos')
+      },
+      servicesDB () {
+        return this.$store.state.services.list
+      },
+      superlogo () {
+        return this.group.data.services.find(el => el.slug === 'superlogo')
+      },
+      rediseno () {
+        return this.group.data.services.find(el => el.slug === 'rediseno-de-logo')
       }
     }
   }

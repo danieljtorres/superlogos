@@ -71,7 +71,7 @@
           </div>
           <div class="principal-services-logo-item">
             <h2 class="principal-services-logo-title">REDISEÑO DE <b>LOGO</b></h2>
-            <h2 class="principal-services-logo-price">99$</h2>
+            <h2 class="principal-services-logo-price">{{ getPrice('logotipos').value || 'N/A' }} $</h2>
             <div class="principal-services-logo-description">
               Calidad en refrescamiento de imagen.<br>
               Diseño listo en 24 horas.<br>
@@ -82,7 +82,7 @@
                 <div class="principal-services-off">¡20% menos!</div>
               </v-flex>
               <v-flex md6>
-                <v-btn color="primary">¡Empezar ya!</v-btn>
+                <v-btn :to="startUrl('corporativo')" color="primary">¡Empezar ya!</v-btn>
               </v-flex>
             </v-layout>
           </div>
@@ -127,6 +127,7 @@
       }
     },
     async fetch ({ store, params }) {
+      await store.dispatch('services/getAll')
     },
     data () {
       return {
@@ -143,6 +144,7 @@
         services: [
           {
             name: 'LOGO + PAPELERÍA',
+            slug: 'logotipos',
             price: {
               value: 119.00,
               symbol: '$'
@@ -161,6 +163,7 @@
           },
           {
             name: 'LOGO + MATERIAL POP',
+            slug: 'logotipos',
             price: {
               value: 119.00,
               symbol: '$'
@@ -179,6 +182,7 @@
           },
           {
             name: 'LOGO + BROCHURE',
+            slug: 'logotipos',
             price: {
               value: 119.00,
               symbol: '$'
@@ -189,6 +193,7 @@
           },
           {
             name: 'LOGO + PACKAGING',
+            slug: 'logotipos',
             price: {
               value: 119.00,
               symbol: '$'
@@ -197,7 +202,29 @@
             items: [],
             image: `/images/logotipos/packages/4.jpg`
           }
-        ]
+        ],
+        frequentQuestions: []
+      }
+    },
+    methods: {
+      getPrice (slug) {
+        let service = this.$store.getters['services/getBySlug'](slug)
+
+        if (service) {
+          return service.price
+        } else {
+          return {}
+        }
+      },
+      startUrl (slug) {
+        let service = this.$store.getters['services/getBySlug'](slug)
+
+        const brief = { service: { id: service.id, name: service.name, slug: service.slug, quantity: 1 }, designs: [], styles: {}, colors: [], customColors: '', information: {}, subServices: [] }
+
+        if (this.$storage) this.$storage.set('brief', brief)
+
+        if (service.slug.includes('logotipos')) return 'servicio/' + service.slug + '/brief/disenos'
+        return 'servicio/' + service.slug + '/brief/estilos'
       }
     }
   }

@@ -16,9 +16,9 @@
             <img :src="service.icon" width="100%">
           </v-flex>
           <v-flex xs6>
-            <h1 class="headline font-weight-bold mb-1" style="color: #666666"> {{ service.dataService.title }} </h1>
+            <h1 class="headline font-weight-bold mb-1" style="color: #666666"> {{ service.name }} </h1>
             <p class="caption" style="text-align: justify; color: #666666;" v-if="!brief.subServices">
-              {{ service.dataService.description }}
+              {{ service.description }}
             </p>
           </v-flex>
           <v-flex md2>
@@ -69,7 +69,7 @@
     <!--DESCUENTO-->
     <!--IVA-->
     <v-flex md12 class="px-3" v-if="service">
-      <!--<v-card class="pa-3">-->
+      <!--<v-card class="pa-3">
         <v-layout row wrap>
           <v-flex md6>
             <h1 class="title font-weight-medium"> I.V.A ({{ $store.state.countries.data.tax }}%) </h1>
@@ -81,7 +81,7 @@
             <h1 class="title font-weight-medium t text-xs-right"> {{ service.price.currency.symbol }} {{ formatNumber(initialIva) }} </h1>
           </v-flex>
         </v-layout>
-      <!--</v-card>-->
+      </v-card>-->
     </v-flex>
     <!--IVA-->
     <!--TOTAL + IVA-->
@@ -107,7 +107,7 @@
     <v-flex md12 class="my-3">
       <div style="height: 1px;"></div>
     </v-flex>
-    <v-flex md7 offset-md5>
+    <!--<v-flex md7 offset-md5>
       <v-layout row>
         <v-flex xs5>
           <v-subheader class="subheading font-weight-bold">Cupón de descuento:</v-subheader>
@@ -119,7 +119,7 @@
           <v-btn @click="validateCoupon" color="ma-0" :class="{ 'primary': coupon === null, 'success': coupon, 'warning': coupon === false }"  large style="margin-top: 3px !important">Validar</v-btn>
         </v-flex>
       </v-layout>
-    </v-flex>
+    </v-flex>-->
     <v-dialog v-if="service" v-model="pay" persistent max-width="50%">
       <v-card>
         <v-card-title class="headline font-weight-bold text-xs-center">

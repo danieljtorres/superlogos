@@ -37,42 +37,38 @@
         },
         // Execute the payment
         onAuthorize: function (data, actions) {
-          return actions.payment.get().then(function (paymentDetails) {
-            vueInstance.cart.currency = { id: vueInstance.currency.id }
-            vueInstance.$axios.$post('carts', vueInstance.cart).then(function (cart) {
-              vueInstance.$storage.set('cart', cart)
-              vueInstance.$storage.set('cart_key', cart.cookie)
+          vueInstance.cart.currency = { id: vueInstance.currency.id }
+          vueInstance.$axios.$post('carts', vueInstance.cart).then(function (cart) {
+            vueInstance.$storage.set('cart', cart)
+            vueInstance.$storage.set('cart_key', cart.cookie)
 
-              let orderObject = {}
-              orderObject.payment = { id: paymentDetails.id }
-              orderObject.order = {
-                brief_cookie: vueInstance.$storage.get('brief_key'),
-                gateways: { id: vueInstance.gatewayId }
+            let orderObject = {}
+            orderObject.payment = { id: data.paymentID, payer_id: data.payerID }
+            orderObject.order = {
+              brief_cookie: vueInstance.$storage.get('brief_key'),
+              gateways: { id: vueInstance.gatewayId }
+            }
+
+            if (vueInstance.coupon) {
+              orderObject.order.coupons = [{ id: vueInstance.coupon.id }]
+            }
+
+            vueInstance.$axios.$post('orders', orderObject, {
+              headers: {
+                'Cart-Id': cart.cookie,
+                'Authorization': vueInstance.$cookies.get('token_session')
               }
-
-              if (vueInstance.coupon) {
-                orderObject.order.coupons = [{ id: vueInstance.coupon.id }]
-              }
-
-              vueInstance.$axios.$post('orders', orderObject, {
-                headers: {
-                  'Cart-Id': cart.cookie,
-                  'Authorization': vueInstance.$storage.get('token_session')
-                }
-              }).then(function (data) {
-                vueInstance.$router.push('/gracias')
-              }).catch(function (error) {
-                if (error) {
-                  alert('error')
-                  vueInstance.$toast.error('Ha ocurrido un error, intente de nuevo! 2')
-                }
-              })
+            }).then(function (data) {
+              vueInstance.$router.push('/gracias?por=compra')
             }).catch(function (error) {
               if (error) {
-                alert('error')
-                vueInstance.$toast.error('Ha ocurrido un error, intente de nuevo! 1')
+                vueInstance.$toast.error('Ha ocurrido un error, intente de nuevo! 2')
               }
             })
+          }).catch(function (error) {
+            if (error) {
+              vueInstance.$toast.error('Ha ocurrido un error, intente de nuevo! 1')
+            }
           })
         }
       }, '#paypal-button')

@@ -18,47 +18,47 @@
 </template>
 
 <script>
-  export default {
-    props: ['title', 'img', 'price', 'slug', 'description', 'items']
-  }
+export default {
+  props: ['title', 'img', 'price', 'slug', 'description', 'items']
+}
 </script>
 
 
 <style scoped>
+.single-service-box {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
 
-  .single-service-box {
-    margin-top: 60px;  
-    margin-bottom: 60px;  
-  }
+.single-service-box .single-service-box-button {
+  text-align: center;
+}
 
-  .single-service-box .single-service-box-button{
-    text-align: center;
-  }
+.single-service-box .price-service-box,
+.single-service-box .description-service-box {
+  margin-bottom: 20px;
+}
 
-  .single-service-box .price-service-box, .single-service-box .description-service-box  {
-    margin-bottom: 20px;
-  }
-
-  .single-service-box .price-service-box{
-    font-weight: normal;
-    font-size: 30px;
-  }
+.single-service-box .price-service-box {
+  font-weight: normal;
+  font-size: 30px;
+}
 
 /*   .single-service-box .description-service-box {
     text-align: justify;
   } */
 
-  .single-service-box .description-service-box, .single-service-box .items-service-box {
-    font-size: 16px;
-  } 
+.single-service-box .description-service-box,
+.single-service-box .items-service-box {
+  font-size: 16px;
+}
 
-  .single-service-box .service-info {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    padding-left: 40px;
-  }
-
-
-
+.single-service-box .service-info {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  padding-left: 40px;
+}
 </style>
+
+

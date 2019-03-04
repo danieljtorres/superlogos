@@ -14,7 +14,8 @@ import {
   AppStylesForm,
   AppPaypal,
   AppStripe,
-  AppBankTransfer
+  AppBankTransfer,
+  AppClients
 } from '@/components'
 
 Vue.component('AppHeading', AppHeading)
@@ -36,3 +37,4 @@ Vue.component('AppStylesForm', AppStylesForm)
 Vue.component('AppPaypal', AppPaypal)
 Vue.component('AppStripe', AppStripe)
 Vue.component('AppBankTransfer', AppBankTransfer)
+Vue.component('AppClients', AppClients)

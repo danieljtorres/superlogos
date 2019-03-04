@@ -1,14 +1,15 @@
 <template>
-  <v-layout row wrap class="single-service-box">
-    <v-flex md6>
+  <v-layout row wrap class="single-service-box" v-if="!not_visible">
+    <v-flex offset-xs2 xs8 offset-md0 md6 class="mb-xs-30">
       <img :src="img" width="100%" v-if="img">
       <div class="single-service-box-button">
         <v-btn color="primary">¡Empezar ya!</v-btn>
       </div>
     </v-flex>
-    <v-flex md6 class="service-info">
+    <v-flex offset-xs1 xs10 offset-md0 md6 class="service-info">
       <h2 class="title-service-box">{{ title }}</h2>
-      <h2 class="price-service-box">{{ price }}</h2>
+      <h2 class="price-service-box" v-if="price" >{{ price.value + ' ' + price.currency.symbol }}
+      </h2>
       <p class="description-service-box">{{ description }}</p>
       <ul class="items-service-box" v-if="items">
         <li v-for="(item, index) in items" :key="index">{{ item }}</li>
@@ -18,9 +19,9 @@
 </template>
 
 <script>
-export default {
-  props: ['title', 'img', 'price', 'slug', 'description', 'items']
-}
+  export default {
+    props: ['title', 'img', 'price', 'slug', 'description', 'items', 'not_visible']
+  }
 </script>
 
 

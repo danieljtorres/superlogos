@@ -1,15 +1,17 @@
 <template>
   <section class="logotipos">
-    <img src="~/assets/images/logotipos/banner_1.jpg" width="100%"/>
-    <AppHeading number="1" size="headline" color="#000000" title="PORTFOLIO"/>
+    <div :style="'background-image: url('+ require(`~/assets/images/logotipos/banner_1.jpg`) +')'"  class="banner width-menu"></div>
+
+    <AppHeading number="1" class="top-padding pb-5" size="default-title" color="#000000" title="PORTAF" marktitle="FOLIO" markcolor="#0090ff" />
     <v-container grid-list-xl class="my-4">
       <v-layout row wrap>
         
       </v-layout>
     </v-container>
+
     <v-layout row class="my-5">
       <v-flex offset-md2 md8>
-        <AppHeading number="1" size="headline" color="#000000" title="PONEMOS A SU ALCANCE"/>
+        <AppHeading number="1" size="default-title" color="#000000" title="PONEMOS A SU ALCANCE"/>
         <v-container grid-list-xl class="pa-4">
           <v-layout row wrap>
             <v-flex v-for="(wpayf, index) in wePutAtYourFingertips" :key="index" md4 class="mb-3 pa-1">
@@ -24,17 +26,18 @@
         </v-container>
       </v-flex>
     </v-layout>
-    <v-layout row class="my-5 pa-5" style="background-color: #014daf !important;">
+    
+    <v-layout row style="background-color: #014daf !important;">
       <v-flex offset-md2 md8>
-        <AppHeading number="1" size="headline" color="#ffffff" title="¿QUÉ SE LLEVA?"/>
-        <v-container grid-list-xl class="pa-4">
+        <AppHeading number="1" class="pt-5 pb-0 mt-5" size="default-title" color="#ffffff" title="¿QUÉ SE LLEVA?"/>
+        <v-container grid-list-xl class="pb-5 mb-5">
           <v-layout row wrap>
-            <v-flex md6 class="mb-3 pa-1">
+            <v-flex md6 class="pa-1">
               <div class="pa-3">
                 <p class="caption" style="color: white;">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) </p>
               </div>
             </v-flex>
-            <v-flex md6 class="mb-3 pa-1">
+            <v-flex md6 class="pa-1">
               <div class="pa-3">
                 <p class="caption" style="color: white;">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) </p>
               </div>
@@ -46,11 +49,11 @@
 
     <v-layout row class="mt-5">
       <v-flex offset-md2 md8>
-        <AppHeading number="2" size="headline" color="#000000" title="PLANES DISPONIBLES"/>
-        <AppServiceBox v-for="(service, index) in services" :key="index"
+        <AppHeading number="2" size="default-title" color="#000000" title="PLANES DISPONIBLES"/>
+        <AppServiceBox v-for="(service, index) in group.data.services" :key="index"
           :title="service.name"
           :description="service.description"
-          :price="service.price.value + ' ' + service.price.symbol"
+          :price="service.price.value + ' ' + service.price.currency.symbol"
           :img="service.image"
           :slug="service.slug"
           :items="service.items"
@@ -60,14 +63,14 @@
 
     <!-- PREGUNTAS FRECUENTES --> 
     <v-layout>
-      <AppExpansionPanels title="PREGUNTAS FRECUENTES" v-if="frequentQuestions" :list="frequentQuestions" />
+      <AppExpansionPanels title="PREGUNTAS " marktitle="FRECUENTES" markcolor="#0090ff" v-if="group.data.frequentQuestions" :list="group.data.frequentQuestions" />
     </v-layout>
 
-    <v-layout row class="mt-5">
-      <v-flex md6>
+    <v-layout row wrap class="mt-5">
+      <v-flex md6 xs12>
         <img src="~/assets/images/home/banner_contact.jpg" width="100%" height="100%">
       </v-flex>
-      <v-flex md6>
+      <v-flex md6 xs12>
         <AppContactForm/>
       </v-flex>
     </v-layout>
@@ -84,6 +87,9 @@
         ]
       }
     },
+    async fetch ({ store, params }) {
+      await store.dispatch('services/getAll')
+    },
     data () {
       return {
         name: 'LOGOTIPOS',
@@ -95,63 +101,16 @@
           { title: '+40 PROFESIONALES', text: 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum' },
           { title: 'DISEÑOS DE UN DÍA PARA OTRO', text: 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum' },
           { title: 'ATENCIÓN PERZONALIZADA', text: 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum' }
-        ],
-        services: [
-          {
-            name: 'EMPRENDEDOR',
-            price: {
-              value: 170.00,
-              symbol: '$'
-            },
-            description: '',
-            items: [
-              '1 Redes sociales (Facebook, Instagram o Twitter).',
-              'Diseño simple de portadas.',
-              '1 Publicación diaria (por red social).',
-              'Interacción continua y estión de la reputación.',
-              'Diseño de publicaciones y programación de contenido.',
-              'Informe trimestral de estadísticas.',
-              'Bonus 10 usd (publicidad Facebook ads).'
-            ],
-            image: `/images/social-media/packages/1.png`
-          },
-          {
-            name: 'EMPRESARIAL',
-            price: {
-              value: 250.00,
-              symbol: '$'
-            },
-            description: '',
-            items: [
-              '2 Redes sociales (Facebook, Instagram o Twitter).',
-              'Diseño personalizado de portadas.',
-              '2 Publicación diarias.',
-              'Interacción continua y gestión de la reputación.',
-              'Plan de redes, diseño de publicaciones y programación de contenido.',
-              'Informe trimestral.',
-              'Atención al cliente (respuesta inmediata).',
-              'Bonus 10 usd (publicidad Facebook ads).'
-            ],
-            image: `/images/social-media/packages/2.png`
-          },
-          {
-            name: 'EMPRESARIAL PREMIUM',
-            price: {
-              value: 399.00,
-              symbol: '$'
-            },
-            description: '',
-            items: [
-              '3 Redes sociales (Facebook, Instagram y Twitter).',
-              'Diseño personalizado de portadas.',
-              '2 Publicación diarias.',
-              'Estrategia de redes, diseño de publicaciones y programación de contenido.',
-              'Atención al cliente (respuesta inmediata).',
-              'Creación de estrategias plataformas pagas.'
-            ],
-            image: `/images/social-media/packages/3.png`
-          }
         ]
+      }
+    },
+    computed: {
+      group () {
+        console.log(this.$store.state)
+        return this.$store.state.services.groups.find(el => el.slug === 'diseno-web')
+      },
+      servicesDB () {
+        return this.$store.state.services.list
       }
     }
   }

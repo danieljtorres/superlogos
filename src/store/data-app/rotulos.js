@@ -1,7 +1,8 @@
 export default {
   title: 'ROTULADO',
-  description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an  unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged`,
-  shortDescription: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`,
+  description: `Ponemos a su disposición diseños modernos y creativos para rotulado de vehículos, muéstrese en las calles con una estética profesional y adaptada a sus necesidades y expectativas. Le damos a su flota de transporte la mejor identidad visual, haciendo que su negocio deje huella a donde quiera que vaya.
+  `,
+  shortDescription: `Destáquese y resalte su marca a donde quiera que vaya con el diseño de los mejores rótulos.`,
   image: '4.jpg',
   image2: '4_4.jpg',
   frequentQuestions: [
@@ -29,6 +30,38 @@ export default {
     }, {
       question: '¿Cómo y en qué formatos recibo el diseño final?',
       response: 'En su email en formatos AI (archivo editable con el programa Adobe Illustrator), EPS (archivo editable en imprentas) y PDF.'
+    }
+  ],
+  services: [
+    {
+      name: 'ROTULADO VEHICULAR',
+      slug: 'rotulado-vehicular',
+      price: {
+        value: 99.00,
+        symbol: '$'
+      },
+      description: 'Diseñamos el rótulo ideal para su vehículo, que lo haga dejar huella a donde quiera que vaya. Dele identidad a su auto. Este paquete incluye el diseño de rotulado para un solo modelo de auto.',
+      image: `/images/rotulos/packages/1.png`
+    },
+    {
+      name: 'ROTULADO PARA VAN',
+      slug: 'rotulado-para-van',
+      price: {
+        value: 109.00,
+        symbol: '$'
+      },
+      description: 'Creamos la imagen ideal para su van. Reciba el diseño de rotulado de su vehículo de transporte. Ideal para nuevas empresas. Este paquete incluye el diseño de rótulo para un solo modelo de van.',
+      image: `/images/rotulos/packages/2.jpg`
+    },
+    {
+      name: 'ROTULADO PARA FLOTA',
+      slug: 'rotulado-flota',
+      price: {
+        value: 199.00,
+        symbol: '$'
+      },
+      description: '¡Es momento de que su empresa se haa notar en las calles! Influye el diseño de rotulos para cuatro modelos de vehículo, diseños distintos para cada unidad, todos bajo  la estética de su imagen como su marca',
+      image: `/images/rotulos/packages/3.png`
     }
   ]
 }

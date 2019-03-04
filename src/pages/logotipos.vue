@@ -1,15 +1,17 @@
 <template>
   <section class="logotipos">
-    <img src="~/assets/images/logotipos/banner_1.jpg" width="100%" class="hola"/>
-    <AppHeading number="2" size="headline" color="#000000" title="PORTFOLIO"/>
+    <div :style="'background-image: url('+ require(`~/assets/images/logotipos/banner_1.jpg`) +')'"  class="banner width-menu"></div>
+
+    <AppHeading number="1" class="top-padding pb-5" size="default-title" color="#000000" title="PORTAF" marktitle="FOLIO" markcolor="#0090ff" />
     <v-container grid-list-xl class="my-4">
       <v-layout row wrap>
         
       </v-layout>
     </v-container>
+
     <v-layout row class="my-5">
       <v-flex offset-md2 md8>
-        <AppHeading number="2" size="headline" color="#000000" title="PONEMOS A SU ALCANCE"/>
+        <AppHeading number="2" size="default-title" color="#000000" title="PONEMOS A SU ALCANCE"/>
         <v-container grid-list-xl class="pa-4">
           <v-layout row wrap>
             <v-flex v-for="(wpayf, index) in wePutAtYourFingertips" :key="index" md4 class="mb-3 pa-1">
@@ -24,17 +26,18 @@
         </v-container>
       </v-flex>
     </v-layout>
-    <v-layout row class="my-5 pa-5" style="background-color: #014daf !important;">
+
+    <v-layout row style="background-color: #014daf !important;">
       <v-flex offset-md2 md8>
-        <AppHeading number="2" size="headline" color="#ffffff" title="¿QUÉ SE LLEVA?"/>
-        <v-container grid-list-xl class="pa-4">
+        <AppHeading number="1" class="pt-5 pb-0 mt-5" size="default-title" color="#ffffff" title="¿QUÉ SE LLEVA?"/>
+        <v-container grid-list-xl class="pb-5 mb-5">
           <v-layout row wrap>
-            <v-flex md6 class="mb-3 pa-1">
+            <v-flex md6 class="pa-1">
               <div class="pa-3">
                 <p class="caption" style="color: white;">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) </p>
               </div>
             </v-flex>
-            <v-flex md6 class="mb-3 pa-1">
+            <v-flex md6 class="pa-1">
               <div class="pa-3">
                 <p class="caption" style="color: white;">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) </p>
               </div>
@@ -51,7 +54,7 @@
         <div class="principal-services-logo">
           <div class="principal-services-logo-item">
             <h2 class="principal-services-logo-title">SUPER<b>LOGO</b></h2>
-            <h2 class="principal-services-logo-price">99$</h2>
+            <h2 class="principal-services-logo-price" v-if="superlogo">{{superlogo.price.value + ' ' + superlogo.price.currency.symbol}}</h2>
             <div class="principal-services-logo-description">
               Diseños originales.<br>
               Diseño listo en 24 horas.<br>
@@ -71,7 +74,7 @@
           </div>
           <div class="principal-services-logo-item">
             <h2 class="principal-services-logo-title">REDISEÑO DE <b>LOGO</b></h2>
-            <h2 class="principal-services-logo-price">{{ getPrice('logotipos').value || 'N/A' }} $</h2>
+            <h2 class="principal-services-logo-price" v-if="rediseno">{{rediseno.price.value + ' ' + rediseno.price.currency.symbol}}</h2>
             <div class="principal-services-logo-description">
               Calidad en refrescamiento de imagen.<br>
               Diseño listo en 24 horas.<br>
@@ -88,28 +91,29 @@
           </div>
         </div>
 
-        <AppHeading number="2" size="headline" color="#000000" title="PAQUETES PARA USTED"/>
-        <AppServiceBox v-for="(service, index) in services" :key="index"
+        <AppHeading number="2" size="default-title" color="#000000" title="PAQUETES PARA USTED"/>
+        <AppServiceBox v-for="(service, index) in group.data.services" :key="index"
           :title="service.name"
           :description="service.description"
-          :price="service.price.value + ' ' + service.price.symbol"
+          :price="service.price"
           :img="service.image"
           :slug="service.slug"
           :items="service.items"
+          :not_visible="service.not_visible || false"
         />
       </v-flex>
     </v-layout>  
 
     <!-- PREGUNTAS FRECUENTES --> 
     <v-layout>
-      <AppExpansionPanels title="PREGUNTAS FRECUENTES" v-if="frequentQuestions" :list="frequentQuestions" />
+      <AppExpansionPanels title="PREGUNTAS " marktitle="FRECUENTES" markcolor="#0090ff" v-if="group.data.frequentQuestions" :list="group.data.frequentQuestions" />
     </v-layout>
     
-    <v-layout row class="mt-5">
-      <v-flex md6>
+    <v-layout row wrap class="mt-5">
+      <v-flex md6 xs12>
         <img src="~/assets/images/home/banner_contact.jpg" width="100%" height="100%">
       </v-flex>
-      <v-flex md6>
+      <v-flex md6 xs12>
         <AppContactForm/>
       </v-flex>
     </v-layout>
@@ -140,91 +144,22 @@
           { title: '+40 PROFESIONALES', text: 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum' },
           { title: 'DISEÑOS DE UN DÍA PARA OTRO', text: 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum' },
           { title: 'ATENCIÓN PERZONALIZADA', text: 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum' }
-        ],
-        services: [
-          {
-            name: 'LOGO + PAPELERÍA',
-            slug: 'logotipos',
-            price: {
-              value: 119.00,
-              symbol: '$'
-            },
-            description: 'Diseñamos el logo ideal para su marca, mostrándole la mayor estética gracias al profesionalismo que nos caracteriza, dando como resultado una imagen que represente sus productos o servicios. Este paquete viene acompañado de tres (3) elementos de papelería para su identidad, donde podrá escoger entre:',
-            items: [
-              'Tarjetas de presentación.',
-              'Carpeta Corporativa.',
-              'Sobre corporativo.',
-              'Hoja membretada.',
-              'Flyer.',
-              'Factura.',
-              'Pendon.'
-            ],
-            image: `/images/logotipos/packages/1.jpg`
-          },
-          {
-            name: 'LOGO + MATERIAL POP',
-            slug: 'logotipos',
-            price: {
-              value: 119.00,
-              symbol: '$'
-            },
-            description: 'Diseñamos el logo ideal para su marca, mostrándole la mayor estética gracias al profesionalismo que nos caracteriza, dando como resultado una imagen que represente sus productos o servicios. Este paquete viene acompañado de tres (3) elementos de material pop para su identidad, donde podrá escoger entre ESTAMPADOS PARA:',
-            items: [
-              'Camisas.',
-              'Gorras.',
-              'Transporte.',
-              'Tazas.',
-              'Lapiceros.',
-              'Carteras.',
-              'Chapas.'
-            ],
-            image: `/images/logotipos/packages/2.jpg`
-          },
-          {
-            name: 'LOGO + BROCHURE',
-            slug: 'logotipos',
-            price: {
-              value: 119.00,
-              symbol: '$'
-            },
-            description: 'Diseñamos el logo ideal para su marca, mostrándole la mayor estética gracias al profesionalismo que nos caracteriza, dando como resultado una imagen que represente sus productos o servicios. Este paquete viene acompañado con un brochore personalizado para su empresa, este es una especie de catálogo donde usted podrá mostrar todos los productos o servicios que ofrece su marca en un formato perfectamente diagramado y elaborado con la mayor dedicación.',
-            items: [],
-            image: `/images/logotipos/packages/3.jpg`
-          },
-          {
-            name: 'LOGO + PACKAGING',
-            slug: 'logotipos',
-            price: {
-              value: 119.00,
-              symbol: '$'
-            },
-            description: 'Diseñamos el logo ideal para su marca, mostrándole la mayor estética gracias al profesionalismo que nos caracteriza, dando como resultado una imagen que represente sus productos o servicios. Este paquete viene acompañado del diseño personalizado del empaque de su producto. Recuerde que la primera impresión es la que cuenta, y si desea que su producto genere impacto, debe confiar su imagen al mejor equipo de trabajo, ¡nosotros!',
-            items: [],
-            image: `/images/logotipos/packages/4.jpg`
-          }
-        ],
-        frequentQuestions: []
+        ]
       }
     },
-    methods: {
-      getPrice (slug) {
-        let service = this.$store.getters['services/getBySlug'](slug)
-
-        if (service) {
-          return service.price
-        } else {
-          return {}
-        }
+    computed: {
+      group () {
+        console.log(this.$store.state)
+        return this.$store.state.services.groups.find(el => el.slug === 'logos')
       },
-      startUrl (slug) {
-        let service = this.$store.getters['services/getBySlug'](slug)
-
-        const brief = { service: { id: service.id, name: service.name, slug: service.slug, quantity: 1 }, designs: [], styles: {}, colors: [], customColors: '', information: {}, subServices: [] }
-
-        if (this.$storage) this.$storage.set('brief', brief)
-
-        if (service.slug.includes('logotipos')) return 'servicio/' + service.slug + '/brief/disenos'
-        return 'servicio/' + service.slug + '/brief/estilos'
+      servicesDB () {
+        return this.$store.state.services.list
+      },
+      superlogo () {
+        return this.group.data.services.find(el => el.slug === 'superlogo')
+      },
+      rediseno () {
+        return this.group.data.services.find(el => el.slug === 'rediseno-de-logo')
       }
     }
   }

@@ -3,7 +3,7 @@
     <v-form id="contact" @submit.prevent="submit">
       <v-layout row wrap class="pa-5">
         <v-flex xs12>
-          <h2>CONTACTO</h2>
+          <h2 class="white--text">CONTACTO</h2>
         </v-flex>
         <v-flex xs12>
           <v-text-field v-model="name" v-validate="'required'" name="contact.name" label="Nombre" placeholder="Nombre" :error-messages="errors.collect('contact.name')" solo flat></v-text-field>
@@ -18,8 +18,10 @@
         <v-flex xs12>
           <v-textarea v-model="message" v-validate="'required'" name="contact.message" label="Mensaje" :error-messages="errors.collect('contact.message')" solo flat></v-textarea>
         </v-flex>
-        <v-flex xs12 md2 order-xs3 order-md1>
-          <v-btn type="submit" class="elevation-0 white--text" style="background-color: #F7941D;">enviar</v-btn>
+        <v-flex xs12 md2 order-xs3 order-md1 offset-md9>
+          <v-btn type="submit" flat class="white--text">
+            <v-icon class="white--text">send</v-icon>
+          </v-btn>
         </v-flex>
       </v-layout>
     </v-form>

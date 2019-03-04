@@ -12,10 +12,10 @@
     <v-flex md12 v-if="service">
       <v-card class="pa-3 elevation-1">
         <v-layout row wrap>
-          <v-flex md1>
+          <v-flex md1 v-if="service.icon">
             <img :src="service.icon" width="100%">
           </v-flex>
-          <v-flex xs6>
+          <v-flex :class="{ 'xs7': !service.icon, 'xs6': service.icon}">
             <h1 class="headline font-weight-bold mb-1" style="color: #666666"> {{ service.name }} </h1>
             <p class="caption" style="text-align: justify; color: #666666;" v-if="!brief.subServices">
               {{ service.description }}
@@ -171,12 +171,13 @@
       total () {
         let total = 0
 
-        if (this.brief.subServices) {
+        if (this.brief.subServices.length) {
           for (let subService in this.brief.subServices) {
             let service = this.$store.getters['services/getBySlug'](subService.slug)
             if (service) total += service.price.value
           }
         } else {
+          console.log(this.service)
           total += this.service.price.value
         }
 

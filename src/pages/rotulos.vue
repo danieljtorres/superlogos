@@ -43,6 +43,7 @@
       <v-flex offset-md2 md8>
         <AppHeading number="2" size="default-title" color="#000000" title="¿QUE ESTÁ BUSCANDO?"/>
         <AppServiceBox v-for="(service, index) in group.data.services" :key="index"
+          :id="service.id"
           :title="service.name"
           :description="service.description"
           :price="service.price.value + ' ' + service.price.currency.symbol"

@@ -49,9 +49,10 @@
       <v-flex offset-md2 md8>
         <AppHeading number="2"  class="top-padding pb-5" size="default-title" color="#000000" title="PAQUETES " marktitle="PARA TI" markcolor="#0090ff"/>
         <AppServiceBox v-for="(service, index) in group.data.services" :key="index"
+          :id="service.id"
           :title="service.name"
           :description="service.description"
-          :price="service.price.value + ' ' + service.price.currency.symbol"
+          :price="service.price"
           :img="service.image"
           :slug="service.slug"
           :items="service.items"

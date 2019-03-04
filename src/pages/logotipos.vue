@@ -65,7 +65,7 @@
                 <div class="principal-services-off">¡20% menos!</div>
               </v-flex>
               <v-flex md6>
-                <v-btn color="primary">¡Empezar ya!</v-btn>
+                <v-btn :to="$toBrief(superlogo)" color="primary">¡Empezar ya!</v-btn>
               </v-flex>
             </v-layout>
           </div>
@@ -85,7 +85,7 @@
                 <div class="principal-services-off">¡20% menos!</div>
               </v-flex>
               <v-flex md6>
-                <v-btn :to="startUrl('corporativo')" color="primary">¡Empezar ya!</v-btn>
+                <v-btn :to="$toBrief(rediseno)" color="primary">¡Empezar ya!</v-btn>
               </v-flex>
             </v-layout>
           </div>
@@ -93,6 +93,7 @@
 
         <AppHeading number="2" size="default-title" color="#000000" title="PAQUETES PARA USTED"/>
         <AppServiceBox v-for="(service, index) in group.data.services" :key="index"
+          :id="service.id"
           :title="service.name"
           :description="service.description"
           :price="service.price"
@@ -149,7 +150,6 @@
     },
     computed: {
       group () {
-        console.log(this.$store.state)
         return this.$store.state.services.groups.find(el => el.slug === 'logos')
       },
       servicesDB () {

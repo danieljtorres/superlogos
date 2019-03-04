@@ -37,4 +37,13 @@
   .application {
     background-color: #ffffff !important;
   }
+
+  .v-content {
+    background-color: #141819;
+  }
+
+  .v-content > div > section {
+    margin-top: 70px; 
+    background-color: #ffffff
+  }
 </style>

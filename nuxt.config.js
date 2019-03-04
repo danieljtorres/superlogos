@@ -46,6 +46,7 @@ module.exports = {
   ],
   plugins: [
     '~/plugins/vuetify.js',
+    '~/plugins/to-brief-function.js',
     // { src: '~/plugins/watch-countries.js', ssr: true },
     { src: '~/plugins/vee-validate.js', ssr: true },
     { src: '~/plugins/vue-cookies.js', ssr: false },

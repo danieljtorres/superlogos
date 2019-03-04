@@ -33,7 +33,9 @@ export const mutations = {
       group.data.services.forEach(service => {
         state.list.forEach(serviceDB => {
           if (serviceDB.slug === service.slug) {
+            service.id = serviceDB.id
             service.price = serviceDB.price
+            service.name = serviceDB.name
           }
         })
       })

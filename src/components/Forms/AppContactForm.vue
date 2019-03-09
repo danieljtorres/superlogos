@@ -53,7 +53,24 @@
         this.$validator.validate().then(result => {
           console.log(result)
           if (result) {
-            alert('SUCCESS!! :-)')
+            /* if (process.browser) {
+              window.grecaptcha.ready(() => {
+                let secret = '6Lf1944UAAAAAHmlC7K-rhNxkaSs1_qbLU7hIdaH'
+                window.grecaptcha.execute(secret, { action: 'SiteWiew' }).then((token) => {
+                  let response = {
+                    secret: secret,
+                    response: token
+                  }
+
+                  this.$axios.post('https://www.google.com/recaptcha/api/siteverify', response).then((res) => {
+                    console.log('grecaptcha', res)
+
+                  }).catch((err) => {
+                    console.log(err)
+                  })
+                })
+              })
+            } */
           }
         })
       }

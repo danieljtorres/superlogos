@@ -148,22 +148,71 @@
       return {
         couponCode: '',
         validCoupon: null,
-        coupon: null
+        coupon: null,
+        gateway: null
+      }
+    },
+    created () {
+      this.gateway = this.gateways[0]
+    },
+    watch: {
+      chargePayMethods (val) {
+        if (!val) return
+        setTimeout(() => (this.$store.commit('cart/OVER_LOADING')), 2000)
       }
     },
     computed: {
       brief () { return this.$store.state.brief.data },
-      pay () { return this.$store.state.cart.pay },
-      gateways () { return this.$store.state.gateways.list },
+      pay: {
+        get: function () {
+          return this.$store.state.cart.pay
+        },
+        set: function (newValue) {
+          this.setPay()
+        }
+      },
+      chargePayMethods () { return this.$store.state.cart.chargePayMethods },
+      gateways () {
+        let gateways = []
+        let ga = this.$store.state.gateways.list
+
+        for (let g of ga) {
+          if (this.checkCurrencies(g.currencies)) {
+            gateways.push(g)
+          }
+        }
+        return gateways
+      },
       service () { return this.$store.getters['services/getBySlug'](this.brief.service.slug) },
       subServices () {
         const services = []
 
-        if (this.brief.subServices) return services
+        if (!this.brief.subServices) return services
 
-        for (let subService in this.brief.subServices) {
-          let service = this.$store.getters['services/getBySlug'](subService.slug)
-          if (service) services.push(service)
+        for (let subService of this.brief.subServices) {
+          let subServices = this.$store.getters['services/addons']
+          for (let sub of subServices) {
+            if (subService.slug === sub.slug) {
+              services.push(sub)
+            }
+          }
+        }
+
+        return services
+      },
+      stationery () {
+        const services = []
+
+        if (!this.brief.subServices) return services
+
+        for (let subService of this.brief.subServices) {
+          let subServices = this.$store.state.services.list
+          for (let sub of subServices) {
+            if (subService.slug === sub.slug) {
+              sub.quantity = subService.quantity
+              services.push(sub)
+            }
+          }
         }
 
         return services
@@ -171,14 +220,26 @@
       total () {
         let total = 0
 
-        if (this.brief.subServices.length) {
-          for (let subService in this.brief.subServices) {
-            let service = this.$store.getters['services/getBySlug'](subService.slug)
-            if (service) total += service.price.value
+        if (this.subServices.length) {
+          for (let subService of this.subServices) {
+            if (subService) {
+              if (subService.slug === 'diseno-y-desarrollo-de-seccion-web') {
+                for (let ss of this.brief.subServices) {
+                  if (ss.sections) total += subService.price.value * ss.sections
+                }
+              } else {
+                total += subService.price.value
+              }
+            }
           }
         } else {
-          console.log(this.service)
-          total += this.service.price.value
+          total += this.service.price.value * this.brief.service.quantity
+
+          if (this.stationery) {
+            for (let sta of this.stationery) {
+              total += sta.price.value * sta.quantity
+            }
+          }
         }
 
         return total
@@ -210,13 +271,12 @@
       cartObject () {
         let cartObject = { services: [] }
 
-        if (this.brief.subServices) {
-          for (let subService in this.brief.subServices) {
-            let service = this.$store.getters['services/getBySlug'](subService.slug)
-            if (service) cartObject.services.push({ id: service.id, quantity: 1 })
+        if (this.brief.subServices.length) {
+          for (let subService of this.brief.subServices) {
+            cartObject.services.push({ id: subService.id, quantity: subService.quantity || 1 })
           }
         } else {
-          cartObject.services.push({ id: this.service.id, quantity: 1 })
+          cartObject.services.push({ id: this.service.id, quantity: this.service.quantity || 1 })
         }
 
         return cartObject
@@ -250,6 +310,7 @@
         return format
       },
       checkCurrencies (currencies) {
+        if (!currencies) return true
         let iso = this.$store.state.countries.data.currency.iso
         let currenciesArray = []
 
@@ -259,7 +320,15 @@
 
         return currenciesArray.includes(iso)
       },
-      setPay () { this.$store.commit('cart/SET_PAY') }
+      setPay () {
+        this.$store.dispatch('cart/setPay')
+      },
+      setGatewayInHover (gateway) {
+        this.gateway = gateway
+      }
+    },
+    beforeDestroy () {
+      if (this.pay) this.setPay()
     }
   }
 </script>

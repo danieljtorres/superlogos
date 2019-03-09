@@ -3,13 +3,13 @@
     <img :src="require(`~/assets/images/home/icons/${iconName}`)" width="80px">
     <p class="title font-weight-bold">{{ title }}</p>
     <p v-if="description" class="description text-xs-justify">{{ description }}</p>
-    <v-btn v-if="button">{{ button }}</v-btn>
+    <v-btn v-if="button" :to="url">{{ button }}</v-btn>
   </div>
 </template>
 
 <script>
   export default {
-    props: ['iconName', 'title', 'description', 'button']
+    props: ['iconName', 'title', 'description', 'button', 'url']
   }
 </script>
 

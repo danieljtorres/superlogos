@@ -46,7 +46,7 @@
           :id="service.id"
           :title="service.name"
           :description="service.description"
-          :price="service.price.value + ' ' + service.price.currency.symbol"
+          :price="service.price"
           :img="service.image"
           :slug="service.slug"
           :items="service.items"

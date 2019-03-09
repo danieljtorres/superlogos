@@ -5,16 +5,16 @@
     <v-container grid-list-xl >
       <v-layout row wrap class="bottom-padding">
         <v-flex md3 class="text-xs-center br-md">
-          <AppIconBox icon-name="1.jpg" title="LOGOTIPOS" description="Logotipos de calidad y paquetes de identidad corporativa adactada a sus necesidades" button="CONOCER"/>
+          <AppIconBox icon-name="1.jpg" title="LOGOTIPOS" description="Logotipos de calidad y paquetes de identidad corporativa adactada a sus necesidades" button="CONOCER" url="/logotipos"/>
         </v-flex>
         <v-flex md3 class="text-xs-center br-md">
-          <AppIconBox icon-name="2.jpg" title="DISEÑO WEB" description="Damos impulso a su marca con las mejores y más funcionales páginas web" button="CONOCER"/>
+          <AppIconBox icon-name="2.jpg" title="DISEÑO WEB" description="Damos impulso a su marca con las mejores y más funcionales páginas web" button="CONOCER" url="/diseno-web"/>
         </v-flex>
         <v-flex md3 class="text-xs-center br-md">
-          <AppIconBox icon-name="3.jpg" title="REDES SOCIALES" description="¡Hazte notar! confia al mejor equipo tu proyección en las redes sociales" button="CONOCER"/>
+          <AppIconBox icon-name="3.jpg" title="REDES SOCIALES" description="¡Hazte notar! confia al mejor equipo tu proyección en las redes sociales" button="CONOCER" url="/redes-sociales"/>
         </v-flex>
         <v-flex md3 class="text-xs-center">
-          <AppIconBox icon-name="4.jpg" title="ROTULADOS PARA AUTOS" description="Su flota identificada con los mejores y mas creativos diseños" button="CONOCER"/>
+          <AppIconBox icon-name="4.jpg" title="ROTULADOS PARA AUTOS" description="Su flota identificada con los mejores y mas creativos diseños" button="CONOCER" url="/rotulos"/>
         </v-flex>
       </v-layout>
     </v-container>

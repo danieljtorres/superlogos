@@ -48,14 +48,14 @@
     </v-layout>
     <!--CLIENTES-->
 
-    <AppHeading class="pb-5" number="2" size="default-title" color="#000000" title="CLIENTES"/>
+    <!--<AppHeading class="pb-5" number="2" size="default-title" color="#000000" title="CLIENTES"/>
     <v-container grid-list-xl class="pb-5">
       <v-layout>
         <v-flex offset-md2 md8>
           <AppClients />
         </v-flex>
       </v-layout>
-    </v-container>
+    </v-container>-->
 
     <v-layout row wrap class="mt-5">
       <v-flex md6 xs12>

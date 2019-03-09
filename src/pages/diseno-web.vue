@@ -18,7 +18,7 @@
               <div class="text-xs-center pa-3" style="border-bottom: 3px solid #2196F3; background-color: rgba(0, 0, 0, 0.75);">
                 <img :src="require(`~/assets/images/diseno_web/icons/${index + 1}.png`)" width="30%" style="filter: brightness(10);">
                 <br>
-                <h2 class="body-2 font-weight-bold text-xs-center mb-2" style="color: white;">{{ wpayf.title }}</h2>
+                <h2 class="body-2 font-weight-bold text-xs-center mb-2" style="color: white; height: 40px;">{{ wpayf.title }}</h2>
               </div>
             </v-flex>
           </v-layout>

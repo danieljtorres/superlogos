@@ -1,5 +1,11 @@
 <template>
-    
+  <carousel>
+    <slide v-for="(orderedPortfolio, index) in orderedPortfolios" :key="index">
+      <div v-for="(singlePortfolio, SubIndex) in orderedPortfolio" :key="SubIndex">
+       <svg viewBox="0 0 100 100" :style="'background-image: url(http://198.136.62.171:8080/v1/images/slug/' + singlePortfolio.images[0].slug + ')'"></svg>
+      </div>  
+    </slide>  
+  </carousel>
 </template>
 
 <style>
@@ -10,7 +16,7 @@
 <script>
 export default {
   created () {
-    let portfolios = this.props.portfolios
+    let portfolios = this.portfolios
 
     if (!portfolios) {
       return
@@ -32,8 +38,6 @@ export default {
 
       this.orderedPortfolios[portfoliosLength].push(portfolio)
     }
-
-    console.log(this.orderedPortfolios)
   },
   props: ['portfolios'],
   data () {

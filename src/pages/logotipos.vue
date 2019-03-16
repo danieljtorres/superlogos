@@ -4,7 +4,7 @@
     <AppHeading number="2" size="headline" color="#000000" title="PORTFOLIO"/>
     <v-container grid-list-xl class="my-4">
       <v-layout row wrap>
-        <AppCarouselPortfolio/>
+        <AppCarouselPortfolio :portfolios="portfolios"/>
       </v-layout>
     </v-container>
     <v-layout row class="my-5">
@@ -127,6 +127,10 @@
       }
     },
     async fetch ({ store, params }) {
+      await store.dispatch('portfolios/getAll', params)
+    },
+    computed: {
+      portfolios () { return this.$store.state.portfolios.list }
     },
     data () {
       return {

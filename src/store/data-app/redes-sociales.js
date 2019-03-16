@@ -1,7 +1,8 @@
 export default {
   title: 'REDES SOCIALES',
-  description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an  unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged`,
-  shortDescription: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`,
+  description: `En la actualidad, las redes sociales representan un impacto notorio en la credibilidad de las empresas, a su vez, funciona como puente para tener un enlace directo con los clientes y la interacción se haga notar. Confíanos la estética y manejo de sus redes sociales y demuestre su calidad en todos los medios conocidos.
+ `,
+  shortDescription: `Que su empresa sea líder en facebook, twitter e instagram, no espere más y ¡solicite nuestros servicios!`,
   image: '3.jpg',
   image2: '3_3.jpg',
   frequentQuestions: [
@@ -26,6 +27,65 @@ export default {
     }, {
       question: '¿Pueden diseñar contenidos para mi perfil de red social?',
       response: 'Podemos diseñarlos, solicite una propuesta comercial al respecto.'
+    }
+  ],
+  services: [
+    {
+      name: 'EMPRENDEDOR',
+      slug: 'emprendedor',
+      price: {
+        value: 170.00,
+        symbol: '$'
+      },
+      description: '',
+      items: [
+        '1 Redes sociales (Facebook, Instagram o Twitter).',
+        'Diseño simple de portadas.',
+        '1 Publicación diaria (por red social).',
+        'Interacción continua y estión de la reputación.',
+        'Diseño de publicaciones y programación de contenido.',
+        'Informe trimestral de estadísticas.',
+        'Bonus 10 usd (publicidad Facebook ads).'
+      ],
+      image: `/images/social-media/packages/1.png`
+    },
+    {
+      name: 'EMPRESARIAL',
+      slug: 'empresarial',
+      price: {
+        value: 250.00,
+        symbol: '$'
+      },
+      description: '',
+      items: [
+        '2 Redes sociales (Facebook, Instagram o Twitter).',
+        'Diseño personalizado de portadas.',
+        '2 Publicación diarias.',
+        'Interacción continua y gestión de la reputación.',
+        'Plan de redes, diseño de publicaciones y programación de contenido.',
+        'Informe trimestral.',
+        'Atención al cliente (respuesta inmediata).',
+        'Bonus 10 usd (publicidad Facebook ads).'
+      ],
+      image: `/images/social-media/packages/2.png`
+    },
+    {
+      name: 'EMPRESARIAL PREMIUM',
+      slug: 'empresarial-premium',
+      price: {
+        value: 399.00,
+        symbol: '$'
+      },
+      description: '',
+      items: [
+        '3 Redes sociales (Facebook, Instagram y Twitter).',
+        'Diseño personalizado de portadas.',
+        '2 Publicación diarias.',
+        'Estrategia de redes, diseño de publicaciones y programación de contenido.',
+        'Atención al cliente (respuesta inmediata).',
+        'Creación de estrategias plataformas pagas.'
+      ],
+      image: `/images/social-media/packages/3.png`
     }
   ]
 }

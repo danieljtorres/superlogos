@@ -1,30 +1,30 @@
 <template>
   <section class="inicio">
-    <img src="~/assets/images/home/banner_1.jpg" width="100%"/>
-    <AppHeading number="1" size="headline" color="#000000" title="OFRECEMOS PARA USTED"/>
-    <v-container grid-list-xl class="my-5">
-      <v-layout row wrap>
-        <v-flex md3 class="text-xs-center">
-          <AppIconBox icon-name="1.jpg" title="LOGOTIPOS" description="Logotipos de calidad y paquetes de identidad corporativa adactada a sus necesidades" button="CONOCER"/>
+    <div :style="'background-image: url('+ require(`~/assets/images/home/banner_1.jpg`) +')'"  class="banner width-menu"></div>
+    <AppHeading class="top-padding pb-5" number="2" size="default-title" color="#000000" title="OFRECEMOS PARA USTED"/>
+    <v-container grid-list-xl >
+      <v-layout row wrap class="bottom-padding">
+        <v-flex md3 class="text-xs-center br-md">
+          <AppIconBox icon-name="1.jpg" title="LOGOTIPOS" description="Logotipos de calidad y paquetes de identidad corporativa adactada a sus necesidades" button="CONOCER" url="/logotipos"/>
+        </v-flex>
+        <v-flex md3 class="text-xs-center br-md">
+          <AppIconBox icon-name="2.jpg" title="DISEÑO WEB" description="Damos impulso a su marca con las mejores y más funcionales páginas web" button="CONOCER" url="/diseno-web"/>
+        </v-flex>
+        <v-flex md3 class="text-xs-center br-md">
+          <AppIconBox icon-name="3.jpg" title="REDES SOCIALES" description="¡Hazte notar! confia al mejor equipo tu proyección en las redes sociales" button="CONOCER" url="/redes-sociales"/>
         </v-flex>
         <v-flex md3 class="text-xs-center">
-          <AppIconBox icon-name="2.jpg" title="DISEÑO WEB" description="Damos impulso a su marca con las mejores y más funcionales páginas web" button="CONOCER"/>
-        </v-flex>
-        <v-flex md3 class="text-xs-center">
-          <AppIconBox icon-name="3.jpg" title="REDES SOCIALES" description="¡Hazte notar! confia al mejor equipo tu proyección en las redes sociales" button="CONOCER"/>
-        </v-flex>
-        <v-flex md3 class="text-xs-center">
-          <AppIconBox icon-name="4.jpg" title="ROTULADOS PARA AUTOS" description="Su flota identificada con los mejores y mas creativos diseños" button="CONOCER"/>
+          <AppIconBox icon-name="4.jpg" title="ROTULADOS PARA AUTOS" description="Su flota identificada con los mejores y mas creativos diseños" button="CONOCER" url="/rotulos"/>
         </v-flex>
       </v-layout>
     </v-container>
     <v-layout>
-      <v-flex>
-        <img src="~/assets/images/home/banner_2.jpg" width="100%">
+      <v-flex >
+        <div :style="'background-image: url('+ require(`~/assets/images/home/banner_2.jpg`) +')'"  class="banner"></div>
       </v-flex>
     </v-layout>
-    <AppHeading number="1" size="headline" color="#000000" title="SERVICIOS DE CALIDAD PARA SU PROYECTO"/>
-    <v-container grid-list-xl class="my-4">
+    <AppHeading class="top-bottom-padding" number="2" size="default-title" color="#000000" title="SERVICIOS DE CALIDAD PARA SU PROYECTO"/>
+    <v-container grid-list-xl>
       <v-layout column>
         <v-flex v-for="(group, index) in groups" :key="index" class="service-home-box">
           <AppHomeServiceBox
@@ -33,15 +33,30 @@
           :short-description="group.data.shortDescription"
           :images="[group.data.image, group.data.image2]"
           :slug="group.slug"/>
+
+          <v-flex md-12>
+            <hr class="service-hr">
+          </v-flex>
         </v-flex>
+
       </v-layout>
     </v-container>
-    <v-layout row class="my-5">
-      <v-flex offset-md3 md6>
+    <v-layout row class="pb-5 mb-3">
+      <v-flex offset-xs1 xs10 offset-md3 md6>
         <img src="~/assets/images/home/workflow.jpg" width="100%">
       </v-flex>      
     </v-layout>
     <!--CLIENTES-->
+
+    <!--<AppHeading class="pb-5" number="2" size="default-title" color="#000000" title="CLIENTES"/>
+    <v-container grid-list-xl class="pb-5">
+      <v-layout>
+        <v-flex offset-md2 md8>
+          <AppClients />
+        </v-flex>
+      </v-layout>
+    </v-container>-->
+
     <v-layout row wrap class="mt-5">
       <v-flex md6 xs12>
         <img src="~/assets/images/home/banner_contact.jpg" width="100%" height="100%">

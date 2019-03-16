@@ -93,15 +93,15 @@
   }
 
   .step-progress-bar__step:after {
-      content: '';
-      position: absolute;
-      width: 14px;
-      height: 14px;
-      border: 3px solid #fff;
-      border-radius: 999px;
-      background-color: #e6e6e6;
-      left: 15px;
-      top: 15px;
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 12px;
+    border: 3px solid #fff;
+    background-color: #e6e6e6;
+    border-radius: 6px;
+    left: 15px;
+    top: 16px;
   }
 
   .step-progress-bar__step--current {
@@ -112,11 +112,12 @@
   }
 
   .step-progress-bar__step--current:after {
-    background: #004b7b;
-    width: 22px;
-    height: 22px;
+    background: #edc507;
+    width: 30px;
+    height: 20px;
     top: 11px;
     left: 11px;
+    border-radius: 10px;
   }
 
   .step-progress-bar__step--future {

@@ -1,13 +1,13 @@
 <template>
-  <v-layout row>
-    <v-flex md6>
+  <v-layout row >
+    <v-flex  offset-xs1 xs10 md6 class="pb-0">
       <img :src="require(`~/assets/images/home/services/${images[0]}`)" width="100%">
     </v-flex>
-    <v-flex md6>
-      <h2>{{ title }}</h2>
-      <p>{{ description }}</p>
-      <img :src="require(`~/assets/images/home/services/${images[1]}`)" width="100%">
-      <p>{{ shortDescription }}</p>
+    <v-flex offset-xs1 xs10 md6 class="pb-0">
+      <h2 class="mb-4">{{ title }}</h2>
+      <p class="subheading font-weight-medium text-black">{{ description }}</p>
+      <img :src="require(`~/assets/images/home/services/${images[1]}`)" width="100%" class="mb-2">
+      <p class="subheading font-weight-medium text-black">{{ shortDescription }}</p>
       <v-btn color="blue">solicitar</v-btn>
     </v-flex>
   </v-layout>
@@ -48,5 +48,11 @@
 <style scoped>
   .service-home-box {
     border-bottom: 1px solid black;
+  }
+
+  @media all and (min-width: 320px) and (max-width: 640px) {
+    .flex.service-home-box > div {
+        flex-direction: column;
+    }
   }
 </style>

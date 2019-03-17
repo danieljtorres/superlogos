@@ -2,10 +2,10 @@
   <section class="logotipos">
     <div :style="'background-image: url('+ require(`~/assets/images/logotipos/banner_1.jpg`) +')'"  class="banner width-menu"></div>
 
-    <AppHeading number="1" class="top-padding pb-5" size="default-title" color="#000000" title="PORTAF" marktitle="FOLIO" markcolor="#0090ff" />
+    <AppHeading number="1" class="top-padding pb-5" size="default-title" color="#000000" title="PORTA" marktitle="FOLIO" markcolor="#0090ff" />
     <v-container grid-list-xl class="my-4">
       <v-layout row wrap>
-        
+        <AppCarouselPortfolio :portfolios="portfolios"></AppCarouselPortfolio>
       </v-layout>
     </v-container>
 
@@ -26,7 +26,7 @@
         </v-container>
       </v-flex>
     </v-layout>
-    
+
     <v-layout row style="background-color: #014daf !important;">
       <v-flex offset-md2 md8>
         <AppHeading number="1" class="pt-5 pb-0 mt-5" size="default-title" color="#ffffff" title="¿QUÉ SE LLEVA?"/>
@@ -89,6 +89,11 @@
     },
     async fetch ({ store, params }) {
       await store.dispatch('services/getAll')
+      await store.dispatch('portfolios/getAll', params)
+    },
+    asyncData ({ params }) {
+      params.limit = 0
+      return { params: params }
     },
     data () {
       return {
@@ -106,11 +111,13 @@
     },
     computed: {
       group () {
-        console.log(this.$store.state)
         return this.$store.state.services.groups.find(el => el.slug === 'redes-sociales')
       },
       servicesDB () {
         return this.$store.state.services.list
+      },
+      portfolios () {
+        return this.$store.state.portfolios.list
       }
     }
   }

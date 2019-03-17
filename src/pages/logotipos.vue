@@ -2,10 +2,10 @@
   <section class="logotipos">
     <div :style="'background-image: url('+ require(`~/assets/images/logotipos/banner_1.jpg`) +')'"  class="banner width-menu"></div>
 
-    <AppHeading number="1" class="top-padding pb-5" size="default-title" color="#000000" title="PORTAF" marktitle="FOLIO" markcolor="#0090ff" />
+    <AppHeading number="1" class="top-padding pb-5" size="default-title" color="#000000" title="PORTA" marktitle="FOLIO" markcolor="#0090ff" />
     <v-container grid-list-xl class="my-4">
       <v-layout row wrap>
-        <AppCarouselPortfolio :portfolios="portfolios"/>
+        <AppCarouselPortfolio :portfolios="portfolios"></AppCarouselPortfolio>
       </v-layout>
     </v-container>
 
@@ -133,11 +133,12 @@
     },
     async fetch ({ store, params }) {
       await store.dispatch('services/getAll')
-      // await store.dispatch('portfolios/getAll', params)
+      await store.dispatch('portfolios/getAll', params)
     },
-    /* computed: {
-      portfolios () { return this.$store.state.portfolios.list }
-    }, */
+    asyncData ({ params }) {
+      params.limit = 0
+      return { params: params }
+    },
     data () {
       return {
         name: 'LOGOTIPOS',
@@ -164,7 +165,8 @@
       },
       rediseno () {
         return this.group.data.services.find(el => el.slug === 'rediseno-de-logo')
-      }
+      },
+      portfolios () { return this.$store.state.portfolios.list }
     }
   }
 </script>

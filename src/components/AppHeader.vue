@@ -25,6 +25,7 @@
         <span class="nav-item-label">CONTACTO</span>
       </v-btn>
     </div>
+    <v-spacer class="hidden-md-and-up"></v-spacer>
     <v-toolbar-side-icon @click.stop="$store.dispatch('toggleDrawer')" class="hidden-md-and-up"></v-toolbar-side-icon>
   </v-toolbar>
 </template>

@@ -7,7 +7,21 @@ export const state = () => ({
         { url: '/portafolio', title: 'PORTAFOLIO' },
         { url: '#contacto', title: 'CONTACTO' }
       ],
-      footer: [],
+      headerMovil: [
+        {
+          url: false,
+          title: 'Servicios',
+          icon: 'list',
+          sublinks: [
+            { title: 'Logotipos', slug: 'logotipos' },
+            { title: 'Diseño Web', slug: 'diseno-web' },
+            { title: 'Redes Sociales', slug: 'redes-sociales' },
+            { title: 'Rotulos', slug: 'rotulos' },
+            { title: 'Servicios Profesionales', slug: 'servicios-profesionales' }
+          ]
+        },
+        { url: '/portfolios', title: 'Portfolio', icon: 'important_devices' }
+      ],
       whatsapp: '#'
     },
     drawer: false

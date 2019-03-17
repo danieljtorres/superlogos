@@ -14,7 +14,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'Liderlogo',
+    title: 'Superlogos',
     htmlAttrs: {
       itemscope: undefined,
       itemtype: '<a href="http://schema.org/Article">http://schema.org/Article</a>'
@@ -30,8 +30,8 @@ module.exports = {
       { property: 'og:type', content: '' },
       { property: 'og:url', content: '' },
       { property: 'og:image', content: '' },
-      { property: 'og:description', content: 'Lorem Ipsum' },
-      { property: 'og:site_name', content: 'Liderlogo' },
+      { property: 'og:description', content: 'Los mejores logos aqui' },
+      { property: 'og:site_name', content: 'Superlogos' },
       { property: 'fb:admins', content: '00000000000000000000' }
     ],
     link: [

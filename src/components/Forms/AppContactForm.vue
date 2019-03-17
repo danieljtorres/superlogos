@@ -35,13 +35,7 @@
         name: '',
         email: '',
         message: '',
-        ws: '',
-        times: [
-          '9am a 14hs – Dia de semana',
-          '14hs a 20hs – Dia de semana',
-          '9am a 14hs – Fin de semana'
-        ],
-        for_phone: true
+        ws: ''
       }
     },
     computed: {
@@ -51,27 +45,36 @@
       submit () {
         console.log('enviado')
         this.$validator.validate().then(result => {
-          console.log(result)
-          if (result) {
-            /* if (process.browser) {
-              window.grecaptcha.ready(() => {
-                let secret = '6Lf1944UAAAAAHmlC7K-rhNxkaSs1_qbLU7hIdaH'
-                window.grecaptcha.execute(secret, { action: 'SiteWiew' }).then((token) => {
-                  let response = {
-                    secret: secret,
-                    response: token
-                  }
+          if (!result) return
 
-                  this.$axios.post('https://www.google.com/recaptcha/api/siteverify', response).then((res) => {
-                    console.log('grecaptcha', res)
-
-                  }).catch((err) => {
-                    console.log(err)
-                  })
-                })
-              })
-            } */
+          var contact = {
+            name: this.name,
+            email: this.email,
+            phone: this.ws,
+            message: this.message
           }
+
+          /* Adwords Data */
+
+          let utmCampaign = this.$router.currentRoute.query.utm_campaign
+          if (utmCampaign) {
+            contact.campaign = utmCampaign
+          }
+
+          let utmMedium = this.$router.currentRoute.query.utm_medium
+          if (utmMedium) {
+            contact.medium = utmMedium
+          }
+
+          let utmSource = this.$router.currentRoute.query.utm_source
+          if (utmSource) {
+            contact.source = utmSource
+          }
+
+          this.$store.dispatch('user/contactForm', contact).then((res) => {
+            console.log(res)
+            this.$router.push('/gracias?por=contacto')
+          })
         })
       }
     }

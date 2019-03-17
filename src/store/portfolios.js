@@ -71,12 +71,16 @@ export const actions = {
       if (resetOffset && params.offset !== 0) {
         params.offset = 0
       }
+
+      if (params.limit === undefined) {
+        params.limit = 9
+      }
     }
 
     let portfolios
 
     try {
-      let url = 'portfolios/custom-search?offset=' + params.offset + '&limit=9'
+      let url = 'portfolios/custom-search?offset=' + params.offset + '&limit=' + params.limit
 
       portfolios = await this.$axios.$get(url, {
         params: requestParams

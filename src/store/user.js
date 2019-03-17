@@ -41,5 +41,8 @@ export const actions = {
       vueInstance.$storage.set('token_session', token)
       return true
     }
+  },
+  contactForm ({ dispatch, commit }, params) {
+    return this.$axios.$post('leads', params)
   }
 }

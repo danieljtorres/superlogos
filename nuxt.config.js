@@ -52,7 +52,8 @@ module.exports = {
     { src: '~/plugins/vue-cookies.js', ssr: false },
     { src: '~/plugins/vue2-storage.js', ssr: false },
     { src: '~/plugins/axios.js', ssr: true },
-    { src: '~/plugins/components.js', ssr: true }
+    { src: '~/plugins/components.js', ssr: true },
+    { src: '~/plugins/vue-carousel.js', ssr: false }
   ],
   css: [
     '~/assets/style/app.styl',

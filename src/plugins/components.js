@@ -1,4 +1,5 @@
 import Vue from 'vue'
+
 import {
   AppHeading,
   AppIconBox,
@@ -6,6 +7,7 @@ import {
   AppServiceBox,
   AppContactForm,
   AppExpansionPanels,
+  AppCarouselPortfolio,
   AppBriefingForm,
   AppCheckoutForm,
   AppColorsForm,
@@ -19,6 +21,7 @@ import {
 } from '@/components'
 
 Vue.component('AppHeading', AppHeading)
+Vue.component('AppCarouselPortfolio', AppCarouselPortfolio)
 Vue.component('AppIconBox', AppIconBox)
 Vue.component('AppHomeServiceBox', AppHomeServiceBox)
 Vue.component('AppServiceBox', AppServiceBox)

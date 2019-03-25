@@ -55,115 +55,68 @@ export const state = () => ({
     }
   },
   forms: {
-    'logo-empresa': [
-      { label: '¿Qué nombre desea colocar en su logo?', type: 'text', name: 'logo_name' },
-      { label: '¿Tiene un eslogan que desea colocar en el logotipo?', type: 'text', name: 'logo_slogan' },
-      { label: 'Háblenos de su negocio, ¿A qué se dedica su Empresa? ¿Quiénes son sus clientes? ¿Cuáles son sus productos y/o servicios?', type: 'textarea', name: 'logo_about_us' },
-      { label: '¿Qué preferencias e ideas previas tiene para el diseño de su logo?', type: 'textarea', name: 'logo_preferences_design' },
-      { label: '¿Dónde más usará su Logo?', type: 'checkbox', name: 'logo_applications', options: ['Papeleria, Merchandising', 'Folletos', 'Rótulos, Locales, Vehículos, Uniformes', 'Sitio Web', 'Redes Sociales'] },
-      { label: '¿Tienes imágenes, bocetos o documentos que puedan ser de ayuda? Por ejemplo, tu logo actual, fotos, ilustraciones, contenido, ideas de diseño, etc.', type: 'file', name: 'logo_files' }
+    'logotipos': [
+      { label: 'Nombre a incorporar en el logotipo', type: 'text', name: 'logo_name' },
+      { label: 'Eslogan a incorporar en el logotipo (si tiene)', type: 'text', name: 'logo_slogan' },
+      { label: 'Breve descripción de la organización', type: 'text', name: 'logo_about_us' }
+    ],
+    'superlogo': [
+      'logotipos'
     ],
     'rediseno-de-logo': [
-      'logo-empresa'
+      'logotipos'
     ],
-    'imagen-corporativa': [
-      'logo-empresa',
-      'papeleria'
+    'logo-papeleria': [
+      { label: 'Nombre a incorporar en el logotipo', type: 'text', name: 'logo_name' },
+      { label: 'Eslogan a incorporar en el logotipo (si tiene)', type: 'text', name: 'logo_slogan' },
+      { label: 'Breve descripción de la organización', type: 'text', name: 'logo_about_us' },
+      { label: 'Su logotipo incluye material POP', type: 'checkbox', name: 'website_social_adasdasdts', options: ['Facebook ', 'Tarjeta de presentación', 'Hoja membretada', 'Sobre corporativo'] },
+
+      { label: 'NOMBRE DEL REPRESENTANTE DE LA MARCA', type: 'text', name: 'a' },
+      { label: 'CARGO', type: 'text', name: 'b' },
+      { label: 'CORREO ELECTRONICO', type: 'text', name: 'c' },
+      { label: 'REDES SOCIALES DE LA EMPRESA', type: 'text', name: 'd' },
+      { label: 'DIRECCION', type: 'text', name: 'e' }
     ],
-    'pagina-web': [
-      { label: 'Háblenos de su negocio, ¿A qué se dedica su Empresa? ¿Quiénes son sus clientes? ¿Cuáles son sus productos y/o servicios?', type: 'textarea', name: 'website_about_us' },
-      { label: 'Si ya cuenta con un sitio web, por favor indíquenos ¿Cuál es?', type: 'text', name: 'website_oldsite' },
-      { label: 'Describa cada página o sector de su sitio web y lo que desee comunicar en cada una', type: 'textarea', name: 'website_description' },
-      { label: '¿Qué preferencias o ideas previas tiene para el diseño de su sitio web? Si tiene algún ejemplo puede copiarlo aquí:', type: 'textarea', name: 'website_preferences' },
-      { label: '¿Tiene redes sociales para colocar en su sitio web? ¿Cuáles?', type: 'checkbox', name: 'website_social_accounts', options: ['Facebook ', 'Twitter', 'Instagram', 'Google+', 'Youtube', 'Linkedin', 'Flicker', 'Pinterest', 'Otras'] },
-      { label: '¿Tiene bocetos, ideas previas u otros documentos que puedan ayudar a su proyecto?', type: 'file', name: 'website_files' }
+    'logo-material-pop': [
+      { label: 'Nombre a incorporar en el logotipo', type: 'text', name: 'logo_name' },
+      { label: 'Eslogan a incorporar en el logotipo (si tiene)', type: 'text', name: 'logo_slogan' },
+      { label: 'Breve descripción de la organización', type: 'text', name: 'logo_about_us' },
+      { label: 'Su logotipo incluye material POP', type: 'checkbox', name: 'webasdasaccounts', options: ['Llaveros ', 'Calendarios', 'Bolígrafos', 'Calcomanías', 'Camisetas', 'Block de notas', 'Bolsas de mercado o tiendas', 'Agendas personales o de escritorio', 'Gorras', 'Franelas', 'Tazas', 'Vasos'] },
+
+      { label: 'Desea agregar alguna informacion particulas a su material pop', type: 'text', name: 'a' },
+      { label: 'Desea agregar alguna imagen a su material pop', type: 'file', name: 'b' }
     ],
-    'logo-y-pagina-web': [
-      'logo-empresa',
-      'pagina-web'
-    ],
-    'rotulo': [
-      { label: 'Háblenos de su negocio, ¿A qué se dedica su Empresa? ¿Quiénes son sus clientes? ¿Cuáles son sus productos y/o servicios?', type: 'textarea', name: 'rolls_about_us' },
-      { label: '¿Qué preferencias e ideas previas tiene para el diseño de su rótulo?', type: 'text', name: 'rolls_preferences' },
-      { label: 'Por favor indíquenos las medidas de su rótulo', type: 'text', name: 'rolls_size' },
-      { label: '¿Qué información y elemento desea colocar en su rótulo?', type: 'text', name: 'rolls_content' },
-      { label: '¿Tiene bocetos, ideas previas u otros documentos que puedan ayudar a su proyecto? ', type: 'file', name: 'rolls_files' }
-    ],
-    'rotulo-vehicular': ['rotulo'],
-    'rotulo-local': ['rotulo'],
-    'rotulo-banner': ['rotulo'],
-    'packaging': ['rotulo'],
-    'rotulo-vestimenta-uniforme': ['rotulo'],
-    'rotulo-furgoneta-camion': ['rotulo'],
-    'diseno-folletos-dipticos-tripticos': [
-      { label: 'Háblenos de su negocio, ¿A qué se dedica su Empresa? ¿Quiénes son sus clientes? ¿Cuáles son sus productos y/o servicios?', type: 'textarea', name: 'brochures_about_us' },
-      { label: 'Describa los resultados que desea obtener de su diptico:', type: 'textarea', name: 'brochures_results' },
-      { label: '¿Qué información desea incluir?', type: 'textarea', name: 'brochures_content' },
-      { label: '¿Tiene bocetos, ideas previas u otros documentos que puedan ayudar a su proyecto? ', type: 'file', name: 'brochures_files' }
-    ],
-    'flyer': [
-      { label: 'Háblenos de su negocio, ¿A qué se dedica su Empresa? ¿Quiénes son sus clientes? ¿Cuáles son sus productos y/o servicios?', type: 'textarea', name: 'brochures_about_us' },
-      { label: 'Describa los resultados que desea obtener de su flyer:', type: 'textarea', name: 'brochures_results' },
-      { label: '¿Qué información desea incluir?', type: 'textarea', name: 'brochures_content' },
-      { label: '¿Tiene bocetos, ideas previas u otros documentos que puedan ayudar a su proyecto? ', type: 'file', name: 'brochures_files' }
-    ],
-    'flyer-dos-caras': [
-      { label: 'Háblenos de su negocio, ¿A qué se dedica su Empresa? ¿Quiénes son sus clientes? ¿Cuáles son sus productos y/o servicios?', type: 'textarea', name: 'brochures_about_us' },
-      { label: 'Describa los resultados que desea obtener de su flyer:', type: 'textarea', name: 'brochures_results' },
-      { label: '¿Qué información desea incluir?', type: 'textarea', name: 'brochures_content' },
-      { label: '¿Tiene bocetos, ideas previas u otros documentos que puedan ayudar a su proyecto? ', type: 'file', name: 'brochures_files' }
-    ],
-    'diptico': ['diseno-folletos-dipticos-tripticos'],
-    'tripticos': [
-      { label: 'Háblenos de su negocio, ¿A qué se dedica su Empresa? ¿Quiénes son sus clientes? ¿Cuáles son sus productos y/o servicios?', type: 'textarea', name: 'brochures_about_us' },
-      { label: 'Describa los resultados que desea obtener de su tripticos:', type: 'textarea', name: 'brochures_results' },
-      { label: '¿Qué información desea incluir?', type: 'textarea', name: 'brochures_content' },
-      { label: '¿Tiene bocetos, ideas previas u otros documentos que puedan ayudar a su proyecto? ', type: 'file', name: 'brochures_files' }
-    ],
-    'catalogo': [
-      { label: 'Háblenos de su negocio, ¿A qué se dedica su Empresa? ¿Quiénes son sus clientes? ¿Cuáles son sus productos y/o servicios?', type: 'textarea', name: 'brochures_about_us' },
-      { label: 'Describa los resultados que desea obtener de su catalogo:', type: 'textarea', name: 'brochures_results' },
-      { label: '¿Qué información desea incluir?', type: 'textarea', name: 'brochures_content' },
-      { label: '¿Tiene bocetos, ideas previas u otros documentos que puedan ayudar a su proyecto? ', type: 'file', name: 'brochures_files' }
-    ],
-    'publicidad': [
-      { label: 'Háblenos de su negocio, ¿A qué se dedica su Empresa? ¿Quiénes son sus clientes? ¿Cuáles son sus productos y/o servicios?', type: 'textarea', name: 'brochures_about_us' },
-      { label: 'Describa los resultados que desea obtener de su publicidad:', type: 'textarea', name: 'brochures_results' },
-      { label: '¿Qué información desea incluir?', type: 'textarea', name: 'brochures_content' },
-      { label: '¿Tiene bocetos, ideas previas u otros documentos que puedan ayudar a su proyecto? ', type: 'file', name: 'brochures_files' }
+    'logo-brochure': [
+      { label: 'Nombre a incorporar en el logotipo', type: 'text', name: 'logo_name' },
+      { label: 'Eslogan a incorporar en el logotipo (si tiene)', type: 'text', name: 'logo_slogan' },
+      { label: 'Breve descripción de la organización', type: 'text', name: 'logo_about_us' },
+      { label: 'CORREO ELECTRONICO', type: 'text', name: 'a' },
+      { label: 'NUMERO TELEFONICO', type: 'text', name: 'b' },
+      { label: 'REDES SOCIALES DE LA EMPRESA', type: 'text', name: 'c' },
+      { label: 'DIRECCION', type: 'text', name: 'd' },
+      { label: 'PRODUCTOS O SERVICIOS QUE OFRECEN', type: 'file', name: 'e' },
+      { label: 'INFORMACION QUE DESEE AÑADIR', type: 'file', name: 'f' }
     ],
     'perfil-redes-sociales': [
-      { label: 'Háblenos de su negocio, ¿A qué se dedica su Empresa? ¿Quiénes son sus clientes? ¿Cuáles son sus productos y/o servicios?', type: 'textarea', name: 'social_profiles_about_us' },
-      { label: '¿En qué red social desea aplicar el diseño de su perfil?', type: 'checkbox', name: 'social_profiles_accounts', options: ['Facebook ', 'Twitter', 'Instagram', 'Google+', 'Youtube', 'Linkedin', 'Flicker', 'Pinterest', 'Otras'] },
-      { label: '¿Tiene su logotipo y alguna imagen que le agrada como fondo de portada? ¿O algún ejemplo que le agrade?', type: 'file', name: 'social_profiles_files' }
+      { label: '¿Su negocio posee redes sociales? Cuales:', type: 'checkbox', name: 'social_profiles_accounts', options: ['Facebook ', 'Twitter', 'Instagram'] },
+      { label: 'Seleccione la red social que desea le sea gestionada', type: 'checkbox', name: 'social_profiles_accountssada', options: ['Facebook ', 'Twitter', 'Instagram'] },
+      { label: 'Nombre de su empresa', type: 'text', name: 'logo_slogan' },
+      { label: 'Breve descripción de la organización', type: 'text', name: 'logo_about_usqwqw' },
+      { label: '¿Cuál es su público objetivo?', type: 'text', name: 'logo_about_ussadasd' },
+      { label: 'Nacionalidad de su publico', type: 'text', name: 'logo_about_usqwqe' },
+      { label: '¿Qué desea generar?', type: 'checkbox', name: 'social_profiles_accountssada', options: ['Seguidores ', 'Interacciones', 'Ventas'] },
+      { label: 'Logo he imágenes de su producto', type: 'file', name: 'f' },
+      { label: 'INFORMACION QUE DESEE AÑADIR', type: 'file', name: 'fdsad' }
     ],
-    'vectorizacion': [
-      { label: 'Adjunte el archivo que desea digitalizar:', type: 'file', name: 'vectorization_files' },
-      { label: '¿Dónde más usará su Logo?', type: 'checkbox', name: 'vectorization_aplications', options: ['Papeleria, Merchandising', 'Folletos', 'Rótulos, Locales, Vehículos, Uniformes', 'Sitio Web', 'Redes Sociales'] },
-      { type: 'any' }
+    'empresarial-premium': [
+      'perfil-redes-sociales'
     ],
-    'papeleria': [
-      {
-        label: 'Indique cuáles son sus 6 piezas de papelería, merchandising y redes sociales ', type: 'select_tags', name: 'stationery_pieces', options: ['Block de notas 11 X 14, 2 CM', 'Bono o Vale', 'Caratula CD(cuadrado) 12cm x 12cm', 'Carpeta A4', 'Credenciales 9x 5cm', 'Diploma', 'Firma de email', 'Fondo de Email(Solo válido para Microsoft Outlook)', 'Fondo de escritorio(Especificar resolución pixel)', 'Hoja Albarán A4(A4 – A5 – Carta)', 'Hoja Carta(A4 – Carta)', 'Hoja Factura(A4 – A5 – Carta)', 'Hoja Presupuesto(A4 – Carta)', 'Hoja Fax(A4 – Carta)', 'Hoja de Presentación Power Point', 'Señalador 7 X 29 CM', 'Etiqueta CD(circular) 12cm x 12cm', 'Recetario(A4 – A5 – Carta)', 'Sello(logo ó logo y datos)', 'Separadores(A4 – Carta)', 'Sobre americano(con ventana ó sin ventana)', 'Sobre A4(Horizontal ó Vertical)', 'Talonario', 'Talonarios(A4 – A5 – Carta)', 'Tarjeta de crédito', 'Tarjeta de cita', 'Tarjeta de invitación', 'Tarjeta de regalo', 'Tarjeta de visita(Horizontal ó Vertical)', 'Tarjetón A5Tickets', 'Facebook', 'Taza', 'Twitter', 'Instagram', 'Bolígrafo', 'Bolsa(Determinar medida)', 'Etiqueta 9 X 5', 'Etiqueta cierre bolsa', 'GorroImán 9 X 5', 'Libreta', 'Manteles individuales', 'Pad mouse', 'Paraguas', 'Pegatina coche', 'Pen Drive', 'Posa Vasos', 'Reloj']
-      }
+    'empresarial': [
+      'perfil-redes-sociales'
     ],
-    'desarrollo-de-app': [
-      { label: 'Háblenos de su negocio, ¿A qué se dedica su Empresa? ¿Quiénes son sus clientes? ¿Cuáles son sus productos y/o servicios?', type: 'textarea', name: 'app_about_us' },
-      { label: '¿Qué tipo de app necesita?', type: 'checkbox', name: 'app_type', options: ['Android', 'Ios', 'Android + Ios'] },
-      { label: '¿Qué diseño quieres que tenga su App?', type: 'checkbox', name: 'app_design', options: ['Interfaz sencilla', 'Interfaz personalizada ', 'Interfaz replicada de la web'] },
-      { label: '¿Su App necesita un sistema de login?', type: 'checkbox', name: 'app_login', options: ['Si, con redes sociales', 'Si, con email', 'No', 'No lo sé todavía'] },
-      { label: '¿Su App tiene que estar integrada con un sitio web?', type: 'checkbox', name: 'app_integrate', options: ['Si', 'No', 'No lo sé'] },
-      { label: '¿Los usuarios tienen sus propios perfiles / cuentas?', type: 'checkbox', name: 'app_perfil', options: ['Si', 'No', 'No lo sé'] },
-      { label: '¿Tu app necesita un panel de administración?', type: 'checkbox', name: 'app_admin', options: ['Si', 'No', 'No lo sé'] },
-      { label: '¿Tiene bocetos, ideas previas u otros documentos que puedan ayudar a su proyecto? ', type: 'file', name: 'app_files' },
-      { label: '¿Existen aplicaciones con funcionalidades similares a la de su proyecto?', type: 'textarea', name: 'app_similar' },
-      { label: 'Describa brevemente las características de su aplicación', type: 'textarea', name: 'app_preferences' }
-    ],
-    'ecommerce': [
-      'pagina-web'
-    ],
-    'presencia-web': [
-      'pagina-web'
+    'emprendedor': [
+      'perfil-redes-sociales'
     ]
   }
 })

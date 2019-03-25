@@ -14,7 +14,7 @@
         <div style="height: 1px; background: grey"></div>
       </v-flex>
       <v-flex md4 xs12>
-        <h1 class="heading"> Información Necesaria </h1>
+        <h1 class="heading" v-if="form"> Información Necesaria </h1>
       </v-flex>
       <v-flex md8 xs12>
         <v-text-field v-for="field in form" :key="field.name" v-if="field.type === 'text' && formFields[field.name]" :ref="field.name" v-model="formFields[field.name].value" :label="field.label" box></v-text-field>

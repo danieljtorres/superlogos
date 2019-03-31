@@ -36,6 +36,10 @@
     display: inline-block;
   }
 
+  .portfolio-carousel-item svg {
+    background-size: 100% 100%;
+  }
+
   .button-carousel {
     background-color: gray;
     color: transparent;
@@ -58,7 +62,10 @@ export default {
   created () {
 
   },
-  props: ['portfolios'],
+  async fetch ({ store, params }) {
+    await store.dispatch('portfolios/getAll', params)
+  },
+  props: [],
   data () {
     return {
       currentIndex: 0
@@ -69,37 +76,41 @@ export default {
       this.currentIndex = newIndex
     }
   },
+  watch: {
+    portfolios: function (val) {
+      this.orderedPortfolios()
+    }
+  },
   computed: {
+    portfolios () {
+      return this.$store.state.portfolios.list
+    },
     currentTranslate () {
       let currentTranslate = this.currentIndex * 100
 
       return currentTranslate ? currentTranslate * -1 : 0
     },
     orderedPortfolios () {
-      let portfolios = this.portfolios
-      if (!portfolios) {
-        return
-      }
+      let pList = this.portfolios.filter((portfolio) => portfolio.images[0])
 
       let orderedPortfolios = []
 
-      portfolios = portfolios.filter((portfolio) => portfolio.images[0])
-
-      for (let portfolio of portfolios) {
+      for (let p of pList) {
         let portfoliosLength = orderedPortfolios.length ? orderedPortfolios.length - 1 : 0
 
         if (orderedPortfolios[portfoliosLength] === undefined) {
-          orderedPortfolios[portfoliosLength] = [portfolio]
+          orderedPortfolios[portfoliosLength] = [p]
           continue
         }
 
         if (orderedPortfolios[portfoliosLength].length === 8) {
-          orderedPortfolios[portfoliosLength + 1] = [portfolio]
+          orderedPortfolios[portfoliosLength + 1] = [p]
           continue
         }
 
-        orderedPortfolios[portfoliosLength].push(portfolio)
+        orderedPortfolios[portfoliosLength].push(p)
       }
+      // console.log('orderedPortfolios', orderedPortfolios)
 
       return orderedPortfolios
     }

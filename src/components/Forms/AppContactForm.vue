@@ -1,5 +1,5 @@
 <template>
-  <v-container grid-list-xl class="px-5" style="background-color: #014daf;">
+  <v-container grid-list-xl class="px-5 px-xs-0"  style="background-color: #014daf;">
     <v-form id="contact" @submit.prevent="submit">
       <v-layout row wrap class="pa-5">
         <v-flex xs12>

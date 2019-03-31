@@ -22,12 +22,12 @@
       </v-layout>
     </v-container>
     <v-toolbar fixed style="top: inherit;bottom: 0;">
-      <div class="">
+      <div class="hidden-xs">
         <v-btn color="primary" v-if="showBack" @click="nextStep(stepData.prev)">Atras</v-btn>
       </div>
-      <span>Completa los datos</span>
+      <span class="hidden-xs">Completa los datos</span>
       <v-spacer></v-spacer>
-      <div class="">
+      <div style="display:flex;">
         <v-btn v-if="stepData.next && stepData.number < 4" @click="nextStep(stepData.next)">Omitir</v-btn>
         <v-btn color="primary" v-if="stepData.next && stepData.number < 4" @click="nextStep(stepData.next)">Continuar</v-btn>
         <v-btn color="primary" v-if="stepData.number == 4" @click="submit = true">Continuar</v-btn>

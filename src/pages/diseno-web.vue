@@ -14,7 +14,7 @@
         <AppHeading number="1" class="top-padding pb-5" size="default-title" color="#FFF" title="PONEMOS A SU ALCANCE"/>
         <v-container grid-list-xl class="bottom-padding">
           <v-layout row wrap>
-            <v-flex v-for="(wpayf, index) in wePutAtYourFingertips" :key="index" md3 class="mb-3 pa-1">
+            <v-flex v-for="(wpayf, index) in wePutAtYourFingertips" :key="index" offset-xs2 xs8 offset-md0  md3 class="mb-3 pa-1">
               <div class="text-xs-center pa-3" style="border-bottom: 3px solid #2196F3; background-color: rgba(0, 0, 0, 0.75);">
                 <img :src="require(`~/assets/images/diseno_web/icons/${index + 1}.png`)" width="30%" style="filter: brightness(10);">
                 <br>

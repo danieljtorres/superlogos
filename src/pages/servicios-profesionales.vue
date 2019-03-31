@@ -43,12 +43,12 @@
     </v-container>
     <v-container grid-list-xl class="my-4">
       <v-layout row wrap>
-        <v-flex md6 class="mt-5">
+        <v-flex offset-xs2 xs8 offset-md0 md6 class="mt-5">
           <h2 class="my-3">
             <span class="display-2 black--text">RECOMENDADO</span><br><span class="display-2 black--text font-weight-bold">POR LOS MEJORES</span>
           </h2>
         </v-flex>
-        <v-flex md10 offset-md1>
+        <v-flex offset-xs2 xs8 md10 offset-md1>
           <v-carousel class="elevation-0">
             <v-carousel-item v-for="(item, i) in carouselItems" :key="i">
               <v-container>
@@ -77,11 +77,11 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <v-layout row class="mt-5">
-      <v-flex md6>
+    <v-layout row wrap class="mt-5">
+      <v-flex md6 xs12>
         <img src="~/assets/images/home/banner_contact.jpg" width="100%" height="100%">
       </v-flex>
-      <v-flex md6>
+      <v-flex md6 xs12>
         <AppContactForm/>
       </v-flex>
     </v-layout>

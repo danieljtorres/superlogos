@@ -65,7 +65,7 @@
                 <div class="principal-services-off">¡20% menos!</div>
               </v-flex>
               <v-flex md6>
-                <v-btn :to="$toBrief(superlogo)" color="primary">¡Empezar ya!</v-btn>
+                <v-btn @click="toBrief(superlogo)" color="primary">¡Empezar ya!</v-btn>
               </v-flex>
             </v-layout>
           </div>
@@ -85,7 +85,7 @@
                 <div class="principal-services-off">¡20% menos!</div>
               </v-flex>
               <v-flex md6>
-                <v-btn :to="$toBrief(rediseno)" color="primary">¡Empezar ya!</v-btn>
+                <v-btn @click="toBrief(rediseno)" color="primary">¡Empezar ya!</v-btn>
               </v-flex>
             </v-layout>
           </div>
@@ -155,7 +155,7 @@
     },
     computed: {
       group () {
-        return this.$store.state.services.groups.find(el => el.slug === 'logos')
+        return this.$store.state.services.groups.find(el => el.slug === 'logotipos')
       },
       servicesDB () {
         return this.$store.state.services.list
@@ -167,6 +167,12 @@
         return this.group.data.services.find(el => el.slug === 'rediseno-de-logo')
       },
       portfolios () { return this.$store.state.portfolios.list }
+    },
+    methods: {
+      toBrief: function (ser) {
+        var url = this.$toBrief(ser)
+        this.$router.push(url)
+      }
     }
   }
 </script>

@@ -7,7 +7,7 @@ export const state = () => ({
   list: [],
   groups: [
     {
-      slug: 'logos',
+      slug: 'logotipos',
       data: logotipos
     },
     {

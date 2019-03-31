@@ -3,7 +3,7 @@
     <v-flex offset-xs2 xs8 offset-md0 md6 class="mb-xs-30">
       <img :src="img" width="100%" v-if="img">
       <div class="single-service-box-button">
-        <v-btn :to="$toBrief({ id: id, name: title, slug: slug })" color="primary">¡Empezar ya!</v-btn>
+        <v-btn @click="toBrief({ id: id, name: title, slug: slug })" color="primary">¡Empezar ya!</v-btn>
       </div>
     </v-flex>
     <v-flex offset-xs1 xs10 offset-md0 md6 class="service-info">
@@ -20,7 +20,13 @@
 
 <script>
   export default {
-    props: ['id', 'title', 'img', 'price', 'slug', 'description', 'items', 'not_visible']
+    props: ['id', 'title', 'img', 'price', 'slug', 'description', 'items', 'not_visible'],
+    methods: {
+      toBrief: function (ser) {
+        var url = this.$toBrief(ser)
+        this.$router.push(url)
+      }
+    }
   }
 </script>
 
